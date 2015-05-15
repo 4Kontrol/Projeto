@@ -1,5 +1,0 @@
-br\senac\model\EAO\impl\HospedesEAO.class
-br\senac\model\entidades\Hospede.class
-br\senac\test\TesteHospede.class
-br\senac\util\dbSingleton.class
-br\senac\model\EAO\IHospedeEAO.class

@@ -1,0 +1,27 @@
+.jumbotron{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+body {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.branco{
+    text-decoration-color: white;
+}
+.start{
+
+    height: 400px;
+}
+.logotipo{
+    margin-top: 20px;
+}.exibicao{
+    margin-top: 20px;
+}
+th{
+    text-align: center;
+}
+
+#tabela{
+    display: none;
+}
