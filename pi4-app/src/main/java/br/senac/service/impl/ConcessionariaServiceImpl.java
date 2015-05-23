@@ -22,4 +22,15 @@ public class ConcessionariaServiceImpl implements ConcessionariaService{
 		return concessionariaEAO.getLista();
 	}
 
+	public void editar(Concessionaria concessionaria) {
+		concessionariaEAO = new ConcessionariaEAOImpl();
+		concessionariaEAO.editar(concessionaria);
+		
+	}
+
+	public Concessionaria getConssecionaria(Integer id) {
+		concessionariaEAO = new ConcessionariaEAOImpl();
+		return concessionariaEAO.getConssecionaria(id);
+	}
+
 }

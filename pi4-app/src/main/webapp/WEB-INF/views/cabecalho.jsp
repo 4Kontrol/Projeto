@@ -25,20 +25,8 @@
     <script type="text/javascript" src="<c:url value="/resources/js/jquery.nouislider.min.js"/>"></script>
 
     <script>
-        $(document).ready(function () {
-            $("#listarVeiculos").click(function () {
-                $("#conteudo").empty();
-                $("#conteudo").load("exibeCarros.html");
-            });
-
-            $("#cadastrarVeiculos").click(function () {
-                $("#conteudo").empty();
-                $("#conteudo").load("cadastro-carro.html");
-            });
-        });
         $(function () {
             $.material.init();
-
         });
 
         $(document).ready(function(){
@@ -125,47 +113,3 @@
         </nav>
     </div>
     <!--fim da barra de navega??o -->
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="formulario col-md-6 text-center">
-            <form id="formCadastro" action="/pi4-app/listarConcessionarias" method="post">
-                <div class="COL-MD-8">
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome da concessionária"/>
-                </div>
-                <div class="COL-MD-4">
-                    <input type="text" class="form-control" id="rua" name="rua"placeholder="Rua"/>
-                </div>
-                <div class="">
-                    <input class="form-control" type="text" id="numero" name="numero" placeholder="Nº"/>
-                </div>
-                <div class="" >
-                    <input class="form-control" type="text" id="complemento" name="complemento" placeholder="Complemento"/>
-                </div>
-                <div class="">
-                    <input class="form-control" type="text" id="bairro" name="bairro" placeholder="Bairro"/>
-                </div>
-                <div class="">
-                    <input class="form-control" type="text" id="cidade" name="cidade" placeholder="Cidade"/>
-                </div>
-                <div class="">
-                    <input class="form-control" type="text" id="estado" name="estado" placeholder="Estado"/>
-                </div>
-                <div class="">
-                    <input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="CNPJ"/>
-                </div>
-                <input type="reset" value="Cancelar" class="btn btn-danger"/>
-                <input type="submit" value="Cadastrar" class="btn btn-primary"/>
-            </form>
-        </div>
-    </div>
-    <div class="col-md-12" id="barra-rodape">
-        <nav class="navbar navbar navbar-fixed-bottom ">
-            <div class="container">
-
-            </div>
-        </nav>
-    </div>
-</div>
-
-</body>
-</html>

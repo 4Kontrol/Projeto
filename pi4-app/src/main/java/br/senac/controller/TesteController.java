@@ -21,11 +21,17 @@ public class TesteController {
 		Hospede h = new Hospede();
 		h.setDocumento("spring");
 		h.setDdd(11);
-		h.setNome("noem");
+		h.setNome("noem ");
 		h.setTelefone("5614");
 		t.cadastrar(h);
 		System.out.println("passou controller");
 		return "ok";
+	}
+	
+	@RequestMapping("teste2")
+	public String teste2(){
+		
+		return "cabecalho";
 	}
 
 }

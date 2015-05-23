@@ -14,7 +14,7 @@ import javax.persistence.Entity;
  *
  * @author geovan
  */
-@Entity
+
 public class PrePedido implements Serializable{
     private int id;
     private int cpfCliente;

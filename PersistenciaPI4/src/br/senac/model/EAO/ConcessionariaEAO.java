@@ -9,5 +9,9 @@ public interface ConcessionariaEAO {
 	public void cadastrar(Concessionaria concessionaria);
 	
 	public List<Concessionaria> getLista();
+	
+	public void editar(Concessionaria concessionaria);
+	
+	public Concessionaria getConssecionaria(Integer id);
 
 }

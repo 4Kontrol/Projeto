@@ -12,10 +12,12 @@ import br.senac.util.dbSingleton;
 
 public class ConcessionariaEAOImpl implements ConcessionariaEAO{
 
+	private EntityManager entityManager;
+	
 	@Override
 	public void cadastrar(Concessionaria concessionaria) {
 		
-		EntityManager entityManager = dbSingleton.getEntityManager();
+		 entityManager = dbSingleton.getEntityManager();
         
 		try {
             
@@ -33,8 +35,8 @@ public class ConcessionariaEAOImpl implements ConcessionariaEAO{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Concessionaria> getLista() {
-		  EntityManager entityManager = dbSingleton.getEntityManager();
+	public List<Concessionaria> getLista(){
+		   entityManager = dbSingleton.getEntityManager();
 	        
 	        try{           
 	            Query q = entityManager.createQuery("SELECT c FROM Concessionaria c");
@@ -46,6 +48,30 @@ public class ConcessionariaEAOImpl implements ConcessionariaEAO{
 	        }
 	        return null;
 		
+	}
+
+	@Override
+	public void editar(Concessionaria concessionaria) {
+		entityManager = dbSingleton.getEntityManager();
+		
+		try{           
+			entityManager.getTransaction().begin();
+			entityManager.persist(concessionaria);
+			entityManager.getTransaction().commit();
+			
+        }catch(Exception e){
+        	 entityManager.close();
+        }finally{
+            entityManager.close();
+        }
+		
+	}
+
+	@Override
+	public Concessionaria getConssecionaria(Integer id){
+		
+		entityManager = dbSingleton.getEntityManager();
+		return entityManager.find(Concessionaria.class, id);
 	}
 
 }

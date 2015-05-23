@@ -13,7 +13,7 @@ import javax.persistence.Entity;
  *
  * @author geovan
  */
-@Entity
+
 public class KitAcessorio implements Serializable{
     
     private int id;
