@@ -13,7 +13,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="concessionaria")
 public class Concessionaria implements Serializable{
 	
 
