@@ -16,6 +16,8 @@ import br.senac.model.entidades.KitAcessorio;
 		public void editar(KitAcessorio kitAcessorio);
 		
 		public KitAcessorio getKitAcessorio(Integer id);
+                
+                
 
 	}
 

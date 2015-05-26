@@ -24,7 +24,7 @@ public class KitTeste {
 		int conta = 1;
 		
 		for(Acessorio acessorio : lista){
-			if (conta>=5){
+			if (conta>=2){
 				kitAcessorio.adicionarAcessorio(acessorio);				
 			}
 			

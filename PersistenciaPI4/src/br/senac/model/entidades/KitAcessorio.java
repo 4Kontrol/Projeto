@@ -18,6 +18,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 
 /**
@@ -25,18 +27,17 @@ import javax.persistence.ManyToMany;
  * @author geovan
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "KitAcessorio.regastarKits" , query = "SELECT k FROM KitAcessorio k"),
+    @NamedQuery(name = "KitAcessorio.regastarPorId", query = "SELECT k FROM KitAcessorio k WHERE k.id=:id")
+})
 public class KitAcessorio implements Serializable{
     
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="")
     private int id;
-	@ManyToMany(cascade=CascadeType.ALL)
-	/*@JoinTable(name="kitacessorio_acessorio",
-				joinColumns= JoinColumn (name = "kit_id"),
-				inverseJoinColumns=@JoinColumn(name="acessorio_id")			
-			)
-			*/
+	@ManyToMany
     private List<Acessorio> itensDoKit = new ArrayList<Acessorio>();
 
     public KitAcessorio() {
@@ -56,7 +57,7 @@ public class KitAcessorio implements Serializable{
     		this.itensDoKit.add(acessorio);
     		return acessorio;
     	}
-    	else 
+    	else
     		return null;
     	
     }

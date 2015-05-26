@@ -22,7 +22,8 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries(
 		{
-			@NamedQuery(name="Acessorio.recuperarTodos", query="SELECT a FROM Acessorio a")			
+			@NamedQuery(name="Acessorio.recuperarTodos", query="SELECT a FROM Acessorio a"),
+                        @NamedQuery(name = "Acessorio.recuperarPorId", query="SELECT a FROM Acessorio a WHERE a.id=:id")
 		}
 		)
 public class Acessorio implements Serializable{
