@@ -20,12 +20,14 @@ public class PrePedido implements Serializable{
     private Cliente cliente;
     private Date dataEmissaoPedido;
     private Veiculo veiculo;
-    private List<KitAcessorio> ListaDekitsDeAcessorios;
+    private KitAcessorio ListaDekitsDeAcessorios;
     private List<Acessorio> listaDeAcessorios;
     private boolean situacao;
     
     
-    
+    private boolean existeAcessorioDaListaNoKit(Acessorio acessorio){
+        return true;
+    }
     
 
     public int getId() {
@@ -60,11 +62,11 @@ public class PrePedido implements Serializable{
         this.veiculo = veiculo;
     }
 
-    public List<KitAcessorio> getListaDekitsDeAcessorios() {
+    public KitAcessorio getListaDekitsDeAcessorios() {
         return ListaDekitsDeAcessorios;
     }
 
-    public void setListaDekitsDeAcessorios(List<KitAcessorio> ListaDekitsDeAcessorios) {
+    public void setListaDekitsDeAcessorios(KitAcessorio ListaDekitsDeAcessorios) {
         this.ListaDekitsDeAcessorios = ListaDekitsDeAcessorios;
     }
 
