@@ -17,11 +17,73 @@ import javax.persistence.Entity;
 
 public class PrePedido implements Serializable{
     private int id;
-    private int cpfCliente;
+    private Cliente cliente;
     private Date dataEmissaoPedido;
     private Veiculo veiculo;
     private List<KitAcessorio> ListaDekitsDeAcessorios;
     private List<Acessorio> listaDeAcessorios;
     private boolean situacao;
+    
+    
+    
+    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }    
+
+    public Date getDataEmissaoPedido() {
+        return dataEmissaoPedido;
+    }
+
+    public void setDataEmissaoPedido(Date dataEmissaoPedido) {
+        this.dataEmissaoPedido = dataEmissaoPedido;
+    }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
+    }
+
+    public List<KitAcessorio> getListaDekitsDeAcessorios() {
+        return ListaDekitsDeAcessorios;
+    }
+
+    public void setListaDekitsDeAcessorios(List<KitAcessorio> ListaDekitsDeAcessorios) {
+        this.ListaDekitsDeAcessorios = ListaDekitsDeAcessorios;
+    }
+
+    public List<Acessorio> getListaDeAcessorios() {
+        return listaDeAcessorios;
+    }
+
+    public void setListaDeAcessorios(List<Acessorio> listaDeAcessorios) {
+        this.listaDeAcessorios = listaDeAcessorios;
+    }
+
+    public boolean isSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(boolean situacao) {
+        this.situacao = situacao;
+    }
+    
+    
     
 }
