@@ -23,7 +23,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author Geovan
  */
-@Repository
+
 public class HospedesEAO implements IHospedeEAO{
 
     

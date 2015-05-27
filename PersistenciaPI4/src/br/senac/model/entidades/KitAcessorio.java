@@ -41,6 +41,15 @@ public class KitAcessorio implements Serializable {
     public KitAcessorio() {
 
     }
+    
+    private boolean verificaAcessoriosRepetidos (Acessorio acessorio) {
+        for (Acessorio a : this.itensDoKit) {
+            if (a.equals(acessorio)){
+                return true;
+            }
+        }
+        return false;
+    }
 
     private boolean isFull() {
         if (this.itensDoKit.size() == 5) {
@@ -50,13 +59,30 @@ public class KitAcessorio implements Serializable {
         }
     }
 
-    public Acessorio adicionarAcessorio(Acessorio acessorio) {
-        if (!isFull()) {
-            this.itensDoKit.add(acessorio);
-            return acessorio;
-        } else {
-            return null;
+    public Acessorio adicionarAcessorio(Acessorio acessorio) {    
+        
+        if (this.itensDoKit!=null){
+            if (!isFull() && !verificaAcessoriosRepetidos(acessorio)) {
+                this.itensDoKit.add(acessorio);
+                return acessorio;
+            } else {
+                return null;
+            }
         }
+        else{
+            instanciarLista();
+            if (!isFull() && !verificaAcessoriosRepetidos(acessorio)) {
+                this.itensDoKit.add(acessorio);
+                return acessorio;
+            } else {
+                return null;
+            }
+        }
+    }
+    
+    private List<Acessorio> instanciarLista(){
+       this.itensDoKit = new ArrayList<Acessorio>();
+       return this.itensDoKit;
     }
 
     public int getId() {
