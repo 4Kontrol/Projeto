@@ -24,7 +24,7 @@ public class dbSingleton {
                 entityManagerFactory = Persistence.createEntityManagerFactory("PI4PU");
                 
             }catch(Exception e ){
-                JOptionPane.showMessageDialog(null, "Erro na gera√ß√£o da conex√£o com o banco de dados, " +e);
+                JOptionPane.showMessageDialog(null, "Erro na geraÁ„o da conex„o com o banco de dados, " +e);
             }
         }
         return entityManagerFactory.createEntityManager();

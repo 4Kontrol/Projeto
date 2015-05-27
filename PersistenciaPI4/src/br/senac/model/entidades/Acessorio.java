@@ -25,12 +25,13 @@ import javax.persistence.NamedQuery;
 			@NamedQuery(name="Acessorio.recuperarTodos", query="SELECT a FROM Acessorio a"),
                         @NamedQuery(name = "Acessorio.recuperarPorId", query="SELECT a FROM Acessorio a WHERE a.id=:id")
 		}
-		)
+	)
 public class Acessorio implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String desricao;
+    private float preco;
 	public int getId() {
 		return id;
 	}
@@ -43,6 +44,12 @@ public class Acessorio implements Serializable{
 	public void setDesricao(String desricao) {
 		this.desricao = desricao;
 	}
-    
-    
+
+    public float getPreco() {
+        return preco;
+    }
+
+    public void setPreco(float preco) {
+        this.preco = preco;
+    }    
 }

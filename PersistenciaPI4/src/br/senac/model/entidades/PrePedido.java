@@ -9,18 +9,41 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author geovan
  */
-
+@Entity
+@Table
+@NamedQueries({
+    @NamedQuery(name = "PrePedido.resgatarTodos", query = "SELECT p FROM PrePedido p"),
+    @NamedQuery(name = "PrePedido.resgatarPorId", query = "SELECT p FROM PrePedido p WHERE p.id=:id")
+})
 public class PrePedido implements Serializable{
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @ManyToOne
     private Cliente cliente;
+    @Temporal(TemporalType.DATE)
     private Date dataEmissaoPedido;
+    @ManyToOne
     private Veiculo veiculo;
+    @ManyToOne
     private KitAcessorio ListaDekitsDeAcessorios;
+    @ManyToMany
     private List<Acessorio> listaDeAcessorios;
     private boolean situacao;
     

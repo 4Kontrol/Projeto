@@ -8,15 +8,11 @@ package br.senac.model.entidades;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -35,12 +31,12 @@ public class KitAcessorio implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "")
-    private int id;
-    
-    private String descricao;
-    
+    private int id;    
+    private String descricao;    
     @ManyToMany
-    private List<Acessorio> itensDoKit = new ArrayList<Acessorio>();
+    private List<Acessorio> itensDoKit;
+    private float preco;
+    
 
     public KitAcessorio() {
 
@@ -85,6 +81,14 @@ public class KitAcessorio implements Serializable {
 
     public void setItensDoKit(List<Acessorio> itensDoKit) {
         this.itensDoKit = itensDoKit;
+    }
+
+    public float getPreco() {
+        return preco;
+    }
+
+    public void setPreco(float preco) {
+        this.preco = preco;
     }
     
     
