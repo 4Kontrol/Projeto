@@ -20,6 +20,6 @@ public interface ClienteEAO {
 
     public void editar(Cliente cliente);
 
-    public Cliente getAcessorio(Integer id);
+    public Cliente getCliente(Integer id);
 
 }

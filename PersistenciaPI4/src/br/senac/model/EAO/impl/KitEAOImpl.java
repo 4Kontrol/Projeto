@@ -54,9 +54,6 @@ public class KitEAOImpl implements KitEAO {
     @Override
     public KitAcessorio getKitAcessorio(Integer id) {
         entityManager = dbSingleton.getEntityManager();
-        Query query = entityManager.createNamedQuery("KitAcessorio.recuperarPorId");
-        query.setParameter("id", id);
-        return (KitAcessorio) query.getSingleResult();
+        return (KitAcessorio) entityManager.find(KitAcessorio.class, id);
     }
-
 }

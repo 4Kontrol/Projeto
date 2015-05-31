@@ -1,6 +1,5 @@
 package br.senac.model.EAO.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -54,10 +53,8 @@ public class AcessorioEAOImpl implements AcessorioEAO {
 
     @Override
     public Acessorio getAcessorio(Integer id) {
-        entityManager = dbSingleton.getEntityManager();
-        Query query = entityManager.createNamedQuery("Acessorio.recuperarPorId");
-        query.setParameter("id", id);
-        return (Acessorio) query.getSingleResult();
+        entityManager = dbSingleton.getEntityManager();               
+        return (Acessorio) entityManager.find(Acessorio.class, id);
     }
 
 }

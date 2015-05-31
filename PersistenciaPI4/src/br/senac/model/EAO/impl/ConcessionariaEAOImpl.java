@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.swing.JOptionPane;
 
 import br.senac.model.EAO.ConcessionariaEAO;
 import br.senac.model.entidades.Concessionaria;
@@ -33,7 +32,7 @@ public class ConcessionariaEAOImpl implements ConcessionariaEAO{
 		
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public List<Concessionaria> getLista(){
 		   entityManager = dbSingleton.getEntityManager();
@@ -63,13 +62,11 @@ public class ConcessionariaEAOImpl implements ConcessionariaEAO{
         	 entityManager.close();
         }finally{
             entityManager.close();
-        }
-		
+        }		
 	}
 
 	@Override
-	public Concessionaria getConssecionaria(Integer id){
-		
+	public Concessionaria getConssecionaria(Integer id){		
 		entityManager = dbSingleton.getEntityManager();
 		return entityManager.find(Concessionaria.class, id);
 	}

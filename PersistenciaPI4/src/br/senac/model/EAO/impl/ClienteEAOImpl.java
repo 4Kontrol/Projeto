@@ -8,8 +8,11 @@ package br.senac.model.EAO.impl;
 import br.senac.model.EAO.ClienteEAO;
 import br.senac.model.entidades.Cliente;
 import br.senac.util.dbSingleton;
+
 import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
@@ -36,17 +39,30 @@ public class ClienteEAOImpl implements ClienteEAO{
 
     @Override
     public List<Cliente> getLista() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager = dbSingleton.getEntityManager();
+        Query query = entityManager.createNamedQuery("Cliente.recuperarTodos");
+        return (List<Cliente>) query.getResultList(); 
     }
 
     @Override
     public void editar(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager = dbSingleton.getEntityManager();
+        
+        try{
+        	entityManager.getTransaction().begin();
+        	entityManager.merge(cliente);
+        	entityManager.getTransaction().commit();
+        }catch(Exception e){
+        	e.printStackTrace();
+        }finally{
+        	entityManager.close();
+        }
     }
 
     @Override
-    public Cliente getAcessorio(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Cliente getCliente(Integer id) {
+        entityManager = dbSingleton.getEntityManager();
+        return entityManager.find(Cliente.class, id);
     }
     
 }

@@ -7,8 +7,7 @@ import br.senac.model.entidades.Acessorio;
 
 public class AcessorioTest {
 	public static void main (String[] args){
-		testaExibe();
-		
+		testaEditar();		
 	}
 	public static void testaInsere(){
 		AcessorioEAOImpl acessorioEAO = new AcessorioEAOImpl();
@@ -27,4 +26,27 @@ public class AcessorioTest {
 			System.out.println(acessorio.getDesricao());			
 		}
 	}
+	
+	
+	public static void testaBuscarPorId(int id){
+		AcessorioEAOImpl acessorioEAO = new AcessorioEAOImpl();
+		Acessorio acessorio = new Acessorio();
+		acessorio = acessorioEAO.getAcessorio(id);
+		System.out.println("Id: "+acessorio.getId());
+		System.out.println("Nome: "+acessorio.getDesricao());
+	}
+	
+	public static void testaEditar(){
+		Acessorio acessorio = new Acessorio();		
+		AcessorioEAOImpl acessorioEAO = new AcessorioEAOImpl();
+		acessorio = acessorioEAO.getAcessorio(5);
+		System.out.println("Antigo: "+acessorio.getDesricao());
+		acessorio.setDesricao("Descrição alterada!");
+		acessorioEAO.editar(acessorio);
+		acessorio = acessorioEAO.getAcessorio(5);
+		System.out.println("Nova: "+acessorio.getDesricao());
+		
+		
+	}
+	
 }
