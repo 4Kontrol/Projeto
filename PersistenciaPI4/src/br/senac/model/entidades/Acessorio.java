@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 /**
@@ -26,6 +27,7 @@ import javax.persistence.NamedQuery;
                         @NamedQuery(name = "Acessorio.recuperarPorId", query="SELECT a FROM Acessorio a WHERE a.id=:id")
 		}
 	)
+@Table
 public class Acessorio implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

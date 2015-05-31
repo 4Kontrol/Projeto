@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
+@Table
 public class Concessionaria implements Serializable{
 	
 
@@ -27,7 +28,7 @@ public class Concessionaria implements Serializable{
 	private String telefone;
 	@Column(name = "cnpj")
 	private String cnpj;	
-	@ManyToMany
+	@OneToOne(cascade = CascadeType.ALL)
 	private Endereco endereco; 
 	
 

@@ -8,6 +8,7 @@ package br.senac.model.entidades;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
@@ -26,6 +28,7 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name = "KitAcessorio.regastarKits", query = "SELECT k FROM KitAcessorio k"),
     @NamedQuery(name = "KitAcessorio.regastarPorId", query = "SELECT k FROM KitAcessorio k WHERE k.id=:id")
 })
+@Table
 public class KitAcessorio implements Serializable {
 
     @Id
