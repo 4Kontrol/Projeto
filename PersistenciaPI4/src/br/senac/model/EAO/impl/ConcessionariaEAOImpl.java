@@ -71,4 +71,23 @@ public class ConcessionariaEAOImpl implements ConcessionariaEAO{
 		return entityManager.find(Concessionaria.class, id);
 	}
 
+    @Override
+    public boolean deletar(Integer id) {
+        entityManager = dbSingleton.getEntityManager();
+        
+        entityManager = dbSingleton.getEntityManager();
+        
+        try{
+            entityManager.getTransaction().begin();
+            entityManager.remove(getConssecionaria(id));
+            entityManager.getTransaction().commit();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }finally{
+            entityManager.close();                 
+        }
+    }
+
 }

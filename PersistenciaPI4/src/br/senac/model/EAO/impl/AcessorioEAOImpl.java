@@ -57,4 +57,23 @@ public class AcessorioEAOImpl implements AcessorioEAO {
         return (Acessorio) entityManager.find(Acessorio.class, id);
     }
 
+    @Override
+    public boolean deletar(Integer id) {
+        entityManager = dbSingleton.getEntityManager();
+        try{            
+            entityManager.getTransaction().begin();
+            entityManager.remove(getAcessorio(id));
+            entityManager.getTransaction().commit();
+            return true;
+        }catch(Exception e ){
+            e.printStackTrace();
+            return false;
+        }finally{
+            entityManager.close();
+        }
+        
+    }
+    
+    
+
 }

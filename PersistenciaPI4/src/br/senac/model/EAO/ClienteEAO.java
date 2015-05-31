@@ -21,5 +21,7 @@ public interface ClienteEAO {
     public void editar(Cliente cliente);
 
     public Cliente getCliente(Integer id);
+    
+    public boolean deletar(Integer id);
 
 }

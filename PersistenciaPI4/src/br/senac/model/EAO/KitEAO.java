@@ -17,7 +17,7 @@ import br.senac.model.entidades.KitAcessorio;
 		
 		public KitAcessorio getKitAcessorio(Integer id);
                 
-                
+                public boolean deletar(Integer id);
 
 	}
 

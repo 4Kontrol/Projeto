@@ -3,32 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package br.senac.model.EAO.impl;
 
-import br.senac.model.EAO.ClienteEAO;
-import br.senac.model.entidades.Cliente;
+import br.senac.model.EAO.VeiculoEAO;
+import br.senac.model.entidades.Veiculo;
 import br.senac.util.dbSingleton;
-
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 /**
  *
- * @author user62
+ * @author Geovan
  */
-public class ClienteEAOImpl implements ClienteEAO{
+public class VeiculoEAOImpl implements VeiculoEAO{
 
     EntityManager entityManager;
     
     @Override
-    public void cadastrar(Cliente cliente) {
+    public void cadastrar(Veiculo veiculo) {
         entityManager = dbSingleton.getEntityManager();
         
         try{
             entityManager.getTransaction().begin();
-            entityManager.persist(cliente);
+            entityManager.persist(veiculo);
             entityManager.getTransaction().commit();
         }catch(Exception e){
             e.printStackTrace();
@@ -38,31 +37,32 @@ public class ClienteEAOImpl implements ClienteEAO{
     }
 
     @Override
-    public List<Cliente> getLista() {
+    public List<Veiculo> getLista() {
         entityManager = dbSingleton.getEntityManager();
-        Query query = entityManager.createNamedQuery("Cliente.recuperarTodos");
-        return (List<Cliente>) query.getResultList(); 
+        Query query = entityManager.createNamedQuery("Veiculo.resgatarTodos");
+        return (List<Veiculo>) query.getResultList();
     }
 
+
     @Override
-    public void editar(Cliente cliente) {
+    public void editar(Veiculo veiculo) {
         entityManager = dbSingleton.getEntityManager();
         
         try{
-        	entityManager.getTransaction().begin();
-        	entityManager.merge(cliente);
-        	entityManager.getTransaction().commit();
+            entityManager.getTransaction().begin();
+            entityManager.merge(veiculo);
+            entityManager.getTransaction().commit();
         }catch(Exception e){
-        	e.printStackTrace();
+            e.printStackTrace();
         }finally{
-        	entityManager.close();
+            entityManager.close();
         }
     }
 
     @Override
-    public Cliente getCliente(Integer id) {
+    public Veiculo getAcessorio(Integer id) {
         entityManager = dbSingleton.getEntityManager();
-        return entityManager.find(Cliente.class, id);
+        return (Veiculo) entityManager.find(Veiculo.class, id);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class ClienteEAOImpl implements ClienteEAO{
         
         try{
             entityManager.getTransaction().begin();
-            entityManager.remove(getCliente(id));
+            entityManager.remove(getAcessorio(id));
             entityManager.getTransaction().commit();
             return true;
         }catch(Exception e){

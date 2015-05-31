@@ -56,4 +56,21 @@ public class KitEAOImpl implements KitEAO {
         entityManager = dbSingleton.getEntityManager();
         return (KitAcessorio) entityManager.find(KitAcessorio.class, id);
     }
+
+    @Override
+    public boolean deletar(Integer id) {
+        entityManager = dbSingleton.getEntityManager();
+        
+        try{
+            entityManager.getTransaction().begin();
+            entityManager.remove(getKitAcessorio(id));
+            entityManager.getTransaction().commit();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }finally{
+            entityManager.close();                 
+        }
+    }
 }
