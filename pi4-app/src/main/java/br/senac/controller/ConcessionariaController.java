@@ -30,7 +30,7 @@ public class ConcessionariaController {
 	}
 	
 	@RequestMapping("/concessionaria/abrirFormulario")
-	public String abrirForm(Model model){
+	public String abrirForm(){
 		
 		return "formularioConcessionaria";
 	}
@@ -48,7 +48,7 @@ public class ConcessionariaController {
 		
 		Concessionaria concessionaria = service.getConssecionaria(id);
 		
-		session.setAttribute("concessionaria", concessionaria);
+		session.setAttribute("concessionariaSessao", concessionaria);
 		model.addAttribute("concessionaria", concessionaria);
 		
 		return "formularioConcessionaria";
@@ -58,7 +58,7 @@ public class ConcessionariaController {
 	@RequestMapping(value = "/concessionaria/efetivarEdicao")
 	public String confirmarEdicao(Model model, Concessionaria concessionaria, Endereco endereco, HttpSession session){
 
-		Concessionaria concessionariaRecuperada = (Concessionaria)session.getAttribute("concessionaria");
+		Concessionaria concessionariaRecuperada = (Concessionaria)session.getAttribute("concessionariaSessao");
 		
 		
 		concessionaria.setId(concessionariaRecuperada.getId());
