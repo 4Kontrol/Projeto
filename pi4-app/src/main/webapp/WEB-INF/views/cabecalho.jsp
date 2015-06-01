@@ -68,10 +68,10 @@
                             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button">Concessionárias<span
                                     class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="/pi4-app/abrirConcessionarias" id="listarConcessionarias">Listar concessionárias
+                                <li><a href="/pi4-app/concessionaria/listarConcessionarias" id="listarConcessionarias">Listar concessionárias
                                     cadastrados</a>
                                 </li>
-                                <li><a href="/pi4-app/abrirCadastroConcessionarias" id="cadastrarConcessionarias">Cadastrar
+                                <li><a href="/pi4-app/concessionaria/abrirFormulario" id="cadastrarConcessionarias">Cadastrar
                                     concessionária</a></li>
                                 <li class="divider"></li>
                                 <li><a href="javascript:void(0)" id="outrasOpcoesConcessionarias">Outras opções</a></li>

@@ -24,7 +24,7 @@
 								<tr>
 								<td>${concessionaria.id}</td>
 								<td>${concessionaria.nome}</td>
-								<td><a href="/pi4-app/editarConcessionaria/${concessionaria.id}">Editar</a>&nbsp &nbsp &nbsp <a href="">Excluir</a></td>
+								<td><a href="/pi4-app/concessionaria/abrirFormulario/${concessionaria.id}">Editar</a>&nbsp &nbsp &nbsp <a href="">Excluir</a></td>
 							</tr>
 							</c:forEach>
 						</table>

@@ -2,34 +2,36 @@ package br.senac.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import br.senac.model.EAO.ConcessionariaEAO;
-import br.senac.model.EAO.impl.ConcessionariaEAOImpl;
 import br.senac.model.entidades.Concessionaria;
 import br.senac.service.ConcessionariaService;
 
+@Component
+@Service
 public class ConcessionariaServiceImpl implements ConcessionariaService{
 	
+	@Autowired
 	private ConcessionariaEAO concessionariaEAO;
 
 	public void cadastrar(Concessionaria concessionaria) {
-		concessionariaEAO = new ConcessionariaEAOImpl();
 		concessionariaEAO.cadastrar(concessionaria);
 		
 	}
 
 	public List<Concessionaria> getLista() {
-		concessionariaEAO = new ConcessionariaEAOImpl();
 		return concessionariaEAO.getLista();
 	}
 
 	public void editar(Concessionaria concessionaria) {
-		concessionariaEAO = new ConcessionariaEAOImpl();
 		concessionariaEAO.editar(concessionaria);
 		
 	}
 
 	public Concessionaria getConssecionaria(Integer id) {
-		concessionariaEAO = new ConcessionariaEAOImpl();
 		return concessionariaEAO.getConssecionaria(id);
 	}
 

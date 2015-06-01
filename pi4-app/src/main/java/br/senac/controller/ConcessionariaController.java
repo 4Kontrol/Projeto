@@ -1,28 +1,27 @@
 package br.senac.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import br.senac.model.entidades.Concessionaria;
 import br.senac.model.entidades.Endereco;
 import br.senac.service.ConcessionariaService;
-import br.senac.service.impl.ConcessionariaServiceImpl;
+
 
 
 @Controller
 public class ConcessionariaController {
 	
-	
+	@Autowired
 	private ConcessionariaService service;
 	
-	@RequestMapping(value = "/listarConcessionarias")
+	@RequestMapping(value = "/concessionaria/efetivarCadatro")
 	public String cadastrar(Model model, Concessionaria concessionaria, Endereco endereco){
 		
-		service = new ConcessionariaServiceImpl();
 		concessionaria.setEndereco(endereco);
 		service.cadastrar(concessionaria);
 		model.addAttribute("concessionarias", service.getLista());
@@ -30,37 +29,43 @@ public class ConcessionariaController {
 		return "listarConcessionarias";
 	}
 	
-	@RequestMapping("/abrirCadastroConcessionarias")
+	@RequestMapping("/concessionaria/abrirFormulario")
 	public String abrirForm(Model model){
 		
 		return "formularioConcessionaria";
 	}
 	
-	@RequestMapping("/abrirConcessionarias")
+	@RequestMapping("/concessionaria/listarConcessionarias")
 	public String abrirLista(Model model){
 		
-		service = new ConcessionariaServiceImpl();
 		model.addAttribute("concessionarias", service.getLista());
 		
 		return "listarConcessionarias";
 	}
 	
-	@RequestMapping("/editarConcessionaria/{id}")
-	public String editarConcessionaria(Model model, @PathVariable("id") Integer id){
-		service = new ConcessionariaServiceImpl();
+	@RequestMapping("/concessionaria/abrirFormulario/{id}")
+	public String editarConcessionaria(Model model, @PathVariable("id") Integer id, HttpSession session){
 		
 		Concessionaria concessionaria = service.getConssecionaria(id);
+		
+		session.setAttribute("concessionaria", concessionaria);
 		model.addAttribute("concessionaria", concessionaria);
+		
 		return "formularioConcessionaria";
 	
 	}
 	
-	@RequestMapping(value = "/confirmarEdicao/{id}")
-	public String confirmarEdicao(Model model, Concessionaria concessionaria, Endereco endereco, @PathVariable("id") Integer id){
+	@RequestMapping(value = "/concessionaria/efetivarEdicao")
+	public String confirmarEdicao(Model model, Concessionaria concessionaria, Endereco endereco, HttpSession session){
+
+		Concessionaria concessionariaRecuperada = (Concessionaria)session.getAttribute("concessionaria");
 		
-		service = new ConcessionariaServiceImpl();
-		concessionaria.setId(id);
+		
+		concessionaria.setId(concessionariaRecuperada.getId());
 		concessionaria.setEndereco(endereco);
+		concessionaria.getEndereco().setId(concessionariaRecuperada.getEndereco().getId());
+		
+		
 		service.editar(concessionaria);
 		model.addAttribute("concessionarias", service.getLista());
 		

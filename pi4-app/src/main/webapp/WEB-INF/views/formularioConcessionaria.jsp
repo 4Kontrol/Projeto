@@ -8,7 +8,7 @@
         <div class="formulario col-md-6 text-center">
            <c:choose>
            		<c:when  test="${concessionaria eq null }">
-		            <form id="formCadastro" action="/pi4-app/listarConcessionarias/" method="post">
+		            <form id="formCadastro" action="/pi4-app/concessionaria/efetivarCadatro" method="post">
 		                <div class="COL-MD-8">
 		                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome da concessionária"/>
 		                </div>
@@ -38,7 +38,7 @@
 		            </form>		
 		    	</c:when>
 		    	<c:otherwise>
-		    		<form id="formCadastro" action="/pi4-app/confirmarEdicao/" method="post">
+		    		<form id="formCadastro" action="/pi4-app/concessionaria/efetivarEdicao" method="post">
 		                <div class="COL-MD-8">
 		                    <input type="hidden" id="id" value="${concessionaria.id}"/>
 		                    <input type="text" value="${concessionaria.nome }" class="form-control" id="nome" name="nome" placeholder="Nome da concessionária"/>
@@ -59,10 +59,10 @@
 		                    <input class="form-control" value="${concessionaria.endereco.cidade}" type="text" id="cidade" name="cidade" placeholder="Cidade"/>
 		                </div>
 		                <div class="">
-		                    <input class="form-control" value="${concessionaria.endereco.estado} type="text" id="estado" name="estado" placeholder="Estado"/>
+		                    <input class="form-control" value="${concessionaria.endereco.estado}" type="text" id="estado" name="estado" placeholder="Estado"/>
 		                </div>
 		                <div class="">
-		                    <input class="form-control" value="${concessionaria.cnpj} type="text" id="cnpj" name="cnpj" placeholder="CNPJ"/>
+		                    <input class="form-control" value="${concessionaria.cnpj}" type="text" id="cnpj" name="cnpj" placeholder="CNPJ"/>
 		                </div>
 		                <input type="reset" value="Cancelar" class="btn btn-danger"/>
 		                <input id="submitForm" type="submit" value="Editar" class="btn btn-primary"/>
