@@ -7,7 +7,7 @@ import br.senac.model.entidades.Acessorio;
 
 public class AcessorioTest {
 	public static void main (String[] args){
-		testaEditar();		
+		testaRemover();		
 	}
 	public static void testaInsere(){
 		AcessorioEAOImpl acessorioEAO = new AcessorioEAOImpl();
@@ -45,8 +45,11 @@ public class AcessorioTest {
 		acessorioEAO.editar(acessorio);
 		acessorio = acessorioEAO.getAcessorio(5);
 		System.out.println("Nova: "+acessorio.getDesricao());
-		
-		
 	}
+        
+        public static void testaRemover(){
+            AcessorioEAOImpl acessorioEAOImpl = new AcessorioEAOImpl();
+            acessorioEAOImpl.deletar(6);
+        }
 	
 }

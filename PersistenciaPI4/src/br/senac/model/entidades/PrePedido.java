@@ -6,6 +6,7 @@
 package br.senac.model.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -30,8 +31,8 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "PrePedido.resgatarTodos", query = "SELECT p FROM PrePedido p"),
     @NamedQuery(name = "PrePedido.resgatarPorId", query = "SELECT p FROM PrePedido p WHERE p.id=:id")
 })
-public class PrePedido implements Serializable{
-    
+public class PrePedido implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -42,15 +43,44 @@ public class PrePedido implements Serializable{
     @ManyToOne
     private Veiculo veiculo;
     @ManyToOne
-    private KitAcessorio ListaDekitsDeAcessorios;
+    private KitAcessorio KitDeAcessorios;
     @ManyToMany
     private List<Acessorio> listaDeAcessorios;
     private boolean situacao;
-    
-    
-    private boolean existeAcessorioDaListaNoKit(Acessorio acessorio){
-        return true;
+
+    private boolean existeAcessorioNoKit(Acessorio acessorio) {
+        if (!this.KitDeAcessorios.equals(null)) {
+            if (this.KitDeAcessorios.getItensDoKit().contains(acessorio)) {
+                return true;
+            }
+        }
+        return false;
     }
+
+    private boolean existeAcessorioNaListaAcessorios(Acessorio acessorio) {
+        if (!this.listaDeAcessorios.equals(null)) {
+            if (this.listaDeAcessorios.contains(acessorio)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Acessorio adicionarAcessorio(Acessorio acessorio) {
+        if (this.listaDeAcessorios.equals(null)){
+            this.listaDeAcessorios = new ArrayList();
+        }else{
+            if (!existeAcessorioNaListaAcessorios(acessorio) && !existeAcessorioNoKit(acessorio)){
+                this.listaDeAcessorios.add(acessorio);
+                return acessorio;
+            }
+            else{
+                return null;
+            }
+        }
+        return null;        
+    }
+    
     
 
     public int getId() {
@@ -67,7 +97,7 @@ public class PrePedido implements Serializable{
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-    }    
+    }
 
     public Date getDataEmissaoPedido() {
         return dataEmissaoPedido;
@@ -85,12 +115,12 @@ public class PrePedido implements Serializable{
         this.veiculo = veiculo;
     }
 
-    public KitAcessorio getListaDekitsDeAcessorios() {
-        return ListaDekitsDeAcessorios;
+    public KitAcessorio getKitDeAcessorios() {
+        return KitDeAcessorios;
     }
 
-    public void setListaDekitsDeAcessorios(KitAcessorio ListaDekitsDeAcessorios) {
-        this.ListaDekitsDeAcessorios = ListaDekitsDeAcessorios;
+    public void setKitDeAcessorios(KitAcessorio ListaDekitsDeAcessorios) {
+        this.KitDeAcessorios = ListaDekitsDeAcessorios;
     }
 
     public List<Acessorio> getListaDeAcessorios() {
@@ -108,7 +138,5 @@ public class PrePedido implements Serializable{
     public void setSituacao(boolean situacao) {
         this.situacao = situacao;
     }
-    
-    
-    
+
 }
