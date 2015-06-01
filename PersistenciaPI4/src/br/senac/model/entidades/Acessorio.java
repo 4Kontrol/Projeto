@@ -33,7 +33,7 @@ public class Acessorio implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String desricao;
+    private String descricao;
     private BigDecimal preco;
 	public Long getId() {
 		return id;
@@ -42,10 +42,10 @@ public class Acessorio implements Serializable{
 		this.id = id;
 	}
 	public String getDesricao() {
-		return desricao;
+		return descricao;
 	}
 	public void setDesricao(String desricao) {
-		this.desricao = desricao;
+		this.descricao = desricao;
 	}
 
     public BigDecimal getPreco() {
