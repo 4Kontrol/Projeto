@@ -19,7 +19,7 @@ public interface VeiculoEAO {
 
     public void editar(Veiculo veiculo);
 
-    public Veiculo getAcessorio(Integer id);
+    public Veiculo getVeiculo(Integer id);
     
     public boolean deletar(Integer id);
 }

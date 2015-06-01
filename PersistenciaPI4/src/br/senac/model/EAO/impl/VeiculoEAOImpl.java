@@ -62,7 +62,7 @@ public class VeiculoEAOImpl implements VeiculoEAO{
     }
 
     @Override
-    public Veiculo getAcessorio(Integer id) {
+    public Veiculo getVeiculo(Integer id) {
         entityManager = dbSingleton.getEntityManager();
         return (Veiculo) entityManager.find(Veiculo.class, id);
     }
@@ -73,7 +73,7 @@ public class VeiculoEAOImpl implements VeiculoEAO{
         
         try{
             entityManager.getTransaction().begin();
-            entityManager.remove(getAcessorio(id));
+            entityManager.remove(getVeiculo(id));
             entityManager.getTransaction().commit();
             return true;
         }catch(Exception e){

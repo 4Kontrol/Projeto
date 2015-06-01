@@ -18,6 +18,10 @@ public interface PrePedidoEAO {
 
     public List<PrePedido> getLista();
     
+    public PrePedido getPrePedido(Integer id);
     
+    public void editar (PrePedido prePedido);
+    
+    public boolean deletar (Integer id);
 
 }

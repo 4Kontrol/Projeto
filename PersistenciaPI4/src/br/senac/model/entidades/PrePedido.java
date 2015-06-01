@@ -54,6 +54,9 @@ public class PrePedido implements Serializable {
         dataEmissaoPedido = new Date();
         setSituacao(false);
     }
+
+    public PrePedido() {
+    }   
     
     
     // mét5odo de apoio para verificar se o acessorio a ser adicionado não esta em um kit

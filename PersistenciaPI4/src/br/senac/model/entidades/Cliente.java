@@ -30,7 +30,7 @@ public class Cliente implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
-    private int cpf;
+    private String cpf;
     @OneToOne
     private Endereco endereco;
 
@@ -50,11 +50,11 @@ public class Cliente implements Serializable{
         this.nome = nome;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
