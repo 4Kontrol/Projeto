@@ -13,11 +13,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author user62
  */
+@Component
 public class ClienteEAOImpl implements ClienteEAO{
 
     EntityManager entityManager;

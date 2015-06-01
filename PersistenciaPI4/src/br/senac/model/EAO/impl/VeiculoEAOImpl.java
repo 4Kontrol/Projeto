@@ -12,11 +12,13 @@ import br.senac.util.dbSingleton;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Geovan
  */
+@Component
 public class VeiculoEAOImpl implements VeiculoEAO{
 
     EntityManager entityManager;

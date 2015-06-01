@@ -6,7 +6,9 @@
 
 package br.senac.test;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  *
@@ -14,8 +16,8 @@ import java.util.Date;
  */
 public class Teste {
     public static void main (String[] args){
-        Date dataHoje = new Date();
-        System.out.println("Data de hoje"+dataHoje);
+        Calendar dataHoje = Calendar.getInstance(Locale.ROOT);
+        System.out.println("Data de hoje"+dataHoje.getTime());
     }
     
 }

@@ -12,7 +12,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.swing.JOptionPane;
 
-import org.springframework.stereotype.Repository;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

@@ -8,7 +8,9 @@ import javax.persistence.Query;
 import br.senac.model.EAO.AcessorioEAO;
 import br.senac.model.entidades.Acessorio;
 import br.senac.util.dbSingleton;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AcessorioEAOImpl implements AcessorioEAO {
 
     EntityManager entityManager;

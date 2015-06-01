@@ -7,7 +7,7 @@ import br.senac.model.entidades.Acessorio;
 
 public class AcessorioTest {
 	public static void main (String[] args){
-		testaRemover();		
+		testaInsere();
 	}
 	public static void testaInsere(){
 		AcessorioEAOImpl acessorioEAO = new AcessorioEAOImpl();

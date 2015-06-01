@@ -1,6 +1,7 @@
 package br.senac.model.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -30,7 +30,10 @@ public class Concessionaria implements Serializable{
 	private String cnpj;	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Endereco endereco; 
-	
+        @ManyToMany
+        private List<Veiculo> listaDeVeiculos;
+        
+        
 
 	
 	public Concessionaria(){
@@ -42,6 +45,16 @@ public class Concessionaria implements Serializable{
 		this.telefone = telefone;
 		this.cnpj = cnpj;
 	}
+
+    public List<Veiculo> getListaDeVeiculos() {
+        return listaDeVeiculos;
+    }
+
+    public void setListaDeVeiculos(List<Veiculo> listaDeVeiculos) {
+        this.listaDeVeiculos = listaDeVeiculos;
+    }
+        
+        
 
 	public int getId() {
 		return id;

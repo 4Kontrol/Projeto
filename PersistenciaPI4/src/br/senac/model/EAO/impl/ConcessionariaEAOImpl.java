@@ -8,7 +8,8 @@ import javax.persistence.Query;
 import br.senac.model.EAO.ConcessionariaEAO;
 import br.senac.model.entidades.Concessionaria;
 import br.senac.util.dbSingleton;
-
+import org.springframework.stereotype.Component;
+@Component
 public class ConcessionariaEAOImpl implements ConcessionariaEAO{
 
 	private EntityManager entityManager;

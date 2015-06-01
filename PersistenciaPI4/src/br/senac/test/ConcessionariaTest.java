@@ -13,7 +13,7 @@ public class ConcessionariaTest {
 	
 	public static void main (String[] args){
         testaInsere();
-        testaBuscaPorID(3);
+        //testaBuscaPorID(3);
     }
     public static void testaExibe(){
         ConcessionariaEAO c = new ConcessionariaEAOImpl();
