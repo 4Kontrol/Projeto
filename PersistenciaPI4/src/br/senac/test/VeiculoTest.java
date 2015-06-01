@@ -21,7 +21,7 @@ public class VeiculoTest {
     public static void testaInsere(){
         Veiculo veiculo = new Veiculo();
         VeiculoEAOImpl veiculoEAOImpl = new VeiculoEAOImpl();
-        veiculo.setModelo("Gol");
+        veiculo.setModelo("Celta");
         veiculoEAOImpl.cadastrar(veiculo);
     }
     

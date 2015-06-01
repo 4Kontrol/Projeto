@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface PrePedidoEAO {
 
-    public void cadastrar(PrePedido prePedido);
+    
 
     public List<PrePedido> getLista();
     

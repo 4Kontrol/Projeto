@@ -67,6 +67,7 @@ public class KitAcessorio implements Serializable {
         if (this.itensDoKit!=null){
             if (!isFull() && !verificaAcessoriosRepetidos(acessorio)) {
                 this.itensDoKit.add(acessorio);
+                this.preco = preco+acessorio.getPreco();
                 return acessorio;
             } else {
                 return null;
@@ -76,6 +77,7 @@ public class KitAcessorio implements Serializable {
             instanciarLista();
             if (!isFull() && !verificaAcessoriosRepetidos(acessorio)) {
                 this.itensDoKit.add(acessorio);
+                this.preco = preco+acessorio.getPreco();
                 return acessorio;
             } else {
                 return null;
@@ -112,6 +114,12 @@ public class KitAcessorio implements Serializable {
         this.itensDoKit = itensDoKit;
     }
 
+    //retorna o preço do kit com o desconto de 20%
+    public float getPrecoVenda(){
+    	return (preco/100)*80;    	
+    }
+    
+    //retorna o preço do kit sem o desconto de 20%
     public float getPreco() {
         return preco;
     }

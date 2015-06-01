@@ -30,7 +30,8 @@ import javax.persistence.TemporalType;
 @Table
 @NamedQueries({
     @NamedQuery(name = "PrePedido.resgatarTodos", query = "SELECT p FROM PrePedido p"),
-    @NamedQuery(name = "PrePedido.resgatarPorId", query = "SELECT p FROM PrePedido p WHERE p.id=:id")
+    @NamedQuery(name = "PrePedido.resgatarPorId", query = "SELECT p FROM PrePedido p WHERE p.id=:id"),
+    @NamedQuery(name = "PrePedido.resgatarPedidosDoMesmoCPFNoMesmoDia", query = "SELECT p FROM PrePedido p WHERE p.dataEmissaoPedido=:dataSelecionada and p.cliente.cpf=:cpf")
 })
 public class PrePedido implements Serializable {
 
@@ -51,7 +52,9 @@ public class PrePedido implements Serializable {
     private boolean situacao;
 
     public PrePedido(Cliente cliente, Veiculo veiculo){
-        dataEmissaoPedido = new Date();
+        this.cliente = cliente;
+        this.veiculo = veiculo;
+    	dataEmissaoPedido = new Date();
         setSituacao(false);
     }
 
@@ -59,7 +62,7 @@ public class PrePedido implements Serializable {
     }   
     
     
-    // mét5odo de apoio para verificar se o acessorio a ser adicionado não esta em um kit
+    // método de apoio para verificar se o acessorio a ser adicionado não esta em um kit
     private boolean existeAcessorioNoKit(Acessorio acessorio) {
         if (!this.KitDeAcessorios.equals(null)) {
             if (this.KitDeAcessorios.getItensDoKit().contains(acessorio)) {

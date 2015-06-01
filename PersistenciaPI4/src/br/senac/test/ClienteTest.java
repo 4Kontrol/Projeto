@@ -15,13 +15,14 @@ import br.senac.model.entidades.Cliente;
  */
 public class ClienteTest {
     public static void main (String [] args){
-        testaBusca();
+        testaInsere();
+    	testaBusca();
     }
     
     public static void testaInsere(){
         Cliente cliente = new Cliente();
-        cliente.setNome("Geovan");
-        cliente.setCpf("333");
+        cliente.setNome("GeovanDois");
+        cliente.setCpf("444");
         ClienteEAOImpl clienteEAOImpl = new ClienteEAOImpl();
         clienteEAOImpl.cadastrar(cliente);
     }
