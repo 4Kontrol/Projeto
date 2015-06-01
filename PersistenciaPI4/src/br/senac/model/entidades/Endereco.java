@@ -15,7 +15,7 @@ public class Endereco implements Serializable{
 		
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@Column(name = "endereco")
 	private String endereco;
@@ -38,11 +38,11 @@ public class Endereco implements Serializable{
 	@Column(name = "estado")
 	private String estado;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

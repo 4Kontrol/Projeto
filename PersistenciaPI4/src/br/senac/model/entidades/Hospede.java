@@ -18,10 +18,10 @@ import javax.persistence.*;
 public class Hospede implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nome;
     private String documento;
-    private int ddd;
+    private Integer ddd;
     private String telefone;
     
 
@@ -30,11 +30,11 @@ public class Hospede implements Serializable {
 
     
     
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -54,11 +54,11 @@ public class Hospede implements Serializable {
         this.documento = documento;
     }
 
-    public int getDdd() {
+    public Integer getDdd() {
         return ddd;
     }
 
-    public void setDdd(int ddd) {
+    public void setDdd(Integer ddd) {
         this.ddd = ddd;
     }
 

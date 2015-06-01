@@ -37,7 +37,7 @@ public class PrePedido implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @ManyToOne
     private Cliente cliente;
     @Temporal(TemporalType.DATE)
@@ -123,11 +123,11 @@ public class PrePedido implements Serializable {
         return KitDeAcessorios;
     }    
     
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

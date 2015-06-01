@@ -6,6 +6,7 @@
 package br.senac.model.entidades;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,27 +28,27 @@ public class Veiculo implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String marca;
     private String modelo;
     private String ano;
     private String imagem;
     private String cor;
-    private int portas;
+    private Integer portas;
     private String combustivel;
     private String potencia;
     private String cambio;
-    private int velocidade;
+    private Integer velocidade;
     private String estofado;
     private String som;
     private String capacidade;
-    private double preco;
+    private BigDecimal preco;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -91,11 +92,11 @@ public class Veiculo implements Serializable{
         this.cor = cor;
     }
 
-    public int getPortas() {
+    public Integer getPortas() {
         return portas;
     }
 
-    public void setPortas(int portas) {
+    public void setPortas(Integer portas) {
         this.portas = portas;
     }
 
@@ -123,11 +124,11 @@ public class Veiculo implements Serializable{
         this.cambio = cambio;
     }
 
-    public int getVelocidade() {
+    public Integer getVelocidade() {
         return velocidade;
     }
 
-    public void setVelocidade(int velocidade) {
+    public void setVelocidade(Integer velocidade) {
         this.velocidade = velocidade;
     }
 
@@ -155,11 +156,11 @@ public class Veiculo implements Serializable{
         this.capacidade = capacidade;
     }
 
-    public double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
     

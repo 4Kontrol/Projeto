@@ -6,6 +6,8 @@
 package br.senac.model.entidades;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +36,11 @@ public class KitAcessorio implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "")
-    private int id;    
+    private Long id;    
     private String descricao;    
     @ManyToMany
     private List<Acessorio> itensDoKit;
-    private float preco;
+    private BigDecimal preco;
     
 
     public KitAcessorio() {
@@ -67,7 +69,7 @@ public class KitAcessorio implements Serializable {
         if (this.itensDoKit!=null){
             if (!isFull() && !verificaAcessoriosRepetidos(acessorio)) {
                 this.itensDoKit.add(acessorio);
-                this.preco = preco+acessorio.getPreco();
+                this.preco.add(acessorio.getPreco());
                 return acessorio;
             } else {
                 return null;
@@ -77,7 +79,7 @@ public class KitAcessorio implements Serializable {
             instanciarLista();
             if (!isFull() && !verificaAcessoriosRepetidos(acessorio)) {
                 this.itensDoKit.add(acessorio);
-                this.preco = preco+acessorio.getPreco();
+                this.preco.add(acessorio.getPreco());
                 return acessorio;
             } else {
                 return null;
@@ -90,11 +92,11 @@ public class KitAcessorio implements Serializable {
        return this.itensDoKit;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -115,16 +117,18 @@ public class KitAcessorio implements Serializable {
     }
 
     //retorna o preço do kit com o desconto de 20%
-    public float getPrecoVenda(){
-    	return (preco/100)*80;    	
+    public BigDecimal getPrecoVenda(){
+    	BigDecimal cem = new BigDecimal(100);
+        BigDecimal oitenta = new BigDecimal(80);
+        return preco.divide(cem).multiply(oitenta);    	
     }
     
     //retorna o preço do kit sem o desconto de 20%
-    public float getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(float preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
     
