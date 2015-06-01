@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Geovan
  */
-public class TestaLIsta {
+public class TesteData {
     
     private List<String> lista = null;
     

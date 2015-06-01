@@ -7,6 +7,7 @@ package br.senac.model.entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -46,8 +47,16 @@ public class PrePedido implements Serializable {
     private KitAcessorio KitDeAcessorios;
     @ManyToMany
     private List<Acessorio> listaDeAcessorios;
+    //situação do prté pedido true=concretizado false=não concretizado
     private boolean situacao;
 
+    public PrePedido(Cliente cliente, Veiculo veiculo){
+        dataEmissaoPedido = new Date();
+        setSituacao(false);
+    }
+    
+    
+    // mét5odo de apoio para verificar se o acessorio a ser adicionado não esta em um kit
     private boolean existeAcessorioNoKit(Acessorio acessorio) {
         if (!this.KitDeAcessorios.equals(null)) {
             if (this.KitDeAcessorios.getItensDoKit().contains(acessorio)) {
@@ -56,7 +65,8 @@ public class PrePedido implements Serializable {
         }
         return false;
     }
-
+    
+    //método de apoio para verificar se o acessorio a ser adiciona já não está na lista de acessorios
     private boolean existeAcessorioNaListaAcessorios(Acessorio acessorio) {
         if (!this.listaDeAcessorios.equals(null)) {
             if (this.listaDeAcessorios.contains(acessorio)) {
@@ -66,6 +76,10 @@ public class PrePedido implements Serializable {
         return false;
     }
 
+    /*
+    Antes de adicionar um acessorio esse método verifica se o acessorio 
+    já não está presente em algum kit ou na lista de acessorios    
+    */    
     public Acessorio adicionarAcessorio(Acessorio acessorio) {
         if (this.listaDeAcessorios.equals(null)){
             this.listaDeAcessorios = new ArrayList();
@@ -82,7 +96,27 @@ public class PrePedido implements Serializable {
     }
     
     
-
+    /*
+    esse método verifica se algum item do kit 
+    já não foi adicionado de forma individual na lista de acessorios
+    Caso já tenha sido adicionado o método retorna o acessorio que esta 
+    repetido para exibir ao cliente qual item está repetido
+    Se não houver itens repetidos ele retorna um objeto null  
+    */
+    public Acessorio setKitDeAcessorios(KitAcessorio ListaDekitsDeAcessorios) {
+        for(Acessorio k : ListaDekitsDeAcessorios.getItensDoKit()){
+            if (existeAcessorioNaListaAcessorios(k)) {
+                return k;
+            }
+        }
+        this.KitDeAcessorios = ListaDekitsDeAcessorios;
+        return null;
+    }
+    
+    public KitAcessorio getKitDeAcessorios() {
+        return KitDeAcessorios;
+    }    
+    
     public int getId() {
         return id;
     }
@@ -113,15 +147,7 @@ public class PrePedido implements Serializable {
 
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
-    }
-
-    public KitAcessorio getKitDeAcessorios() {
-        return KitDeAcessorios;
-    }
-
-    public void setKitDeAcessorios(KitAcessorio ListaDekitsDeAcessorios) {
-        this.KitDeAcessorios = ListaDekitsDeAcessorios;
-    }
+    }    
 
     public List<Acessorio> getListaDeAcessorios() {
         return listaDeAcessorios;

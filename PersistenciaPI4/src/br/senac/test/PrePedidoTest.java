@@ -6,16 +6,14 @@
 
 package br.senac.test;
 
-import java.util.Date;
+import br.senac.model.entidades.Cliente;
 
 /**
  *
  * @author Geovan
  */
-public class Teste {
+public class PrePedidoTest {
     public static void main (String[] args){
-        Date dataHoje = new Date();
-        System.out.println("Data de hoje"+dataHoje);
-    }
-    
+     
+    }   
 }
