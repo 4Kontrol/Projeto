@@ -4,6 +4,7 @@
 <jsp:include page="cabecalho.jsp"></jsp:include> 
 
     <div class="row">
+    	<h1>Cadastrar Concessionária</h1>
         <div class="col-md-3"></div>
         <div class="formulario col-md-6 text-center">
            <c:choose>
