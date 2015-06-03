@@ -13,7 +13,7 @@ public class AcessorioTest {
 		AcessorioEAOImpl acessorioEAO = new AcessorioEAOImpl();
 		for	(int i = 0 ; i<25;i++){
 			Acessorio acessorio = new Acessorio();
-			acessorio.setDesricao("Acessorio"+i);
+			acessorio.setDescricao("Acessorio"+i);
 			acessorioEAO.cadastrar(acessorio);
 		}
 	}
@@ -23,7 +23,7 @@ public class AcessorioTest {
 		List<Acessorio> lista = acessorioEAO.getLista();
 		
 		for (Acessorio acessorio : lista){
-			System.out.println(acessorio.getDesricao());			
+			System.out.println(acessorio.getDescricao());			
 		}
 	}
 	
@@ -33,18 +33,18 @@ public class AcessorioTest {
 		Acessorio acessorio = new Acessorio();
 		acessorio = acessorioEAO.getAcessorio(id);
 		System.out.println("Id: "+acessorio.getId());
-		System.out.println("Nome: "+acessorio.getDesricao());
+		System.out.println("Nome: "+acessorio.getDescricao());
 	}
 	
 	public static void testaEditar(){
 		Acessorio acessorio = new Acessorio();		
 		AcessorioEAOImpl acessorioEAO = new AcessorioEAOImpl();
 		acessorio = acessorioEAO.getAcessorio(5);
-		System.out.println("Antigo: "+acessorio.getDesricao());
-		acessorio.setDesricao("Descrição alterada!");
+		System.out.println("Antigo: "+acessorio.getDescricao());
+		acessorio.setDescricao("Descrição alterada!");
 		acessorioEAO.editar(acessorio);
 		acessorio = acessorioEAO.getAcessorio(5);
-		System.out.println("Nova: "+acessorio.getDesricao());
+		System.out.println("Nova: "+acessorio.getDescricao());
 	}
         
         public static void testaRemover(){

@@ -41,11 +41,11 @@ public class Acessorio implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getDesricao() {
+	public String getDescricao() {
 		return descricao;
 	}
-	public void setDesricao(String desricao) {
-		this.descricao = desricao;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
     public BigDecimal getPreco() {
