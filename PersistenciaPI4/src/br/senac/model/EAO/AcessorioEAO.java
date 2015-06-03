@@ -11,8 +11,8 @@ public interface AcessorioEAO {
 
 	public void editar(Acessorio acessorio);
 
-	public Acessorio getAcessorio(Integer id);
+	public Acessorio getAcessorio(Long id);
 
-	public boolean deletar(Integer id);
+	public boolean deletar(Long id);
 
 }

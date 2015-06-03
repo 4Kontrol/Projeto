@@ -24,8 +24,7 @@ public class AcessorioServiceImpl implements AcessorioService{
 
 	public List<Acessorio> getLista() {
 		
-		acessorioEAO.getLista();
-		return null;
+		return acessorioEAO.getLista();
 	}
 
 	public void editar(Acessorio acessorio) {
@@ -33,12 +32,12 @@ public class AcessorioServiceImpl implements AcessorioService{
 		
 	}
 
-	public Acessorio getAcessorio(Integer id) {
+	public Acessorio getAcessorio(Long id) {
 		
 		return null;
 	}
 
-	public boolean deletar(Integer id) {
+	public boolean deletar(Long id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
