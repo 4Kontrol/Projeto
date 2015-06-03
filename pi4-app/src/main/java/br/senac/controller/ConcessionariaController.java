@@ -44,7 +44,7 @@ public class ConcessionariaController {
 	}
 	
 	@RequestMapping("/concessionaria/abrirFormulario/{id}")
-	public String editarConcessionaria(Model model, @PathVariable("id") Integer id, HttpSession session){
+	public String editarConcessionaria(Model model, @PathVariable("id") Long id, HttpSession session){
 		
 		Concessionaria concessionaria = service.getConssecionaria(id);
 		

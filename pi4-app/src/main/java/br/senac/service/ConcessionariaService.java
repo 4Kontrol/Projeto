@@ -12,6 +12,6 @@ public interface ConcessionariaService {
 
 	public void editar(Concessionaria concessionaria);
 
-	public Concessionaria getConssecionaria(Integer id);
+	public Concessionaria getConssecionaria(Long id);
 
 }

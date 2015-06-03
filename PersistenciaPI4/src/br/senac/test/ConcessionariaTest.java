@@ -43,7 +43,7 @@ public class ConcessionariaTest {
         c.cadastrar(registro);
     }
     
-    public static void testaBuscaPorID(int id){
+    public static void testaBuscaPorID(long id){
     	ConcessionariaEAO c = new ConcessionariaEAOImpl();
     	Concessionaria con = new Concessionaria();
     	con = c.getConssecionaria(id);

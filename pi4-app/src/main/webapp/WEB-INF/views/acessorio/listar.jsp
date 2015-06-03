@@ -1,6 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"pageEncoding="ISO-8859-1"%>
 
     
 
@@ -25,7 +24,7 @@
 								<td>${acessorio.id}</td>
 								<td>${acessorio.descricao}</td>
 								<td><a href="/pi4-app/acessorio/abrirFormulario/${acessorio.id}">Editar</a>&nbsp &nbsp &nbsp <a href="">Excluir</a></td>
-							</tr>
+								</tr>
 							</c:forEach>
 						</table>
 					</div>
