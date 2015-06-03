@@ -31,9 +31,10 @@ public class PrePedidoTest {
     	PrePedidoEAOImpl prePedidoEAOImpl = new PrePedidoEAOImpl();
     	ClienteEAOImpl clienteEAOImpl = new ClienteEAOImpl();
     	VeiculoEAOImpl veiculoEAOImpl = new VeiculoEAOImpl();    	
-    	PrePedido prePedido = new PrePedido(clienteEAOImpl.getCliente(2),veiculoEAOImpl.getVeiculo(2));
-    	
-    	prePedidoEAOImpl.registrarPrePedido(prePedido);
+    	PrePedido prePedido = new PrePedido();
+    	prePedido.setCliente(clienteEAOImpl.getCliente(2));
+        prePedido.setVeiculo(veiculoEAOImpl.getVeiculo(2));
+    	prePedidoEAOImpl.cadastrar(prePedido);
     }
     
     public static void testaBusca(){

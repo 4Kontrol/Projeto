@@ -13,7 +13,7 @@ public class ConcessionariaTest {
 	
 	public static void main (String[] args){
         testaInsere();
-        //testaBuscaPorID(3);
+        testaBuscaPorID(1);
     }
     public static void testaExibe(){
         ConcessionariaEAO c = new ConcessionariaEAOImpl();
@@ -43,7 +43,7 @@ public class ConcessionariaTest {
         c.cadastrar(registro);
     }
     
-    public static void testaBuscaPorID(long id){
+    public static void testaBuscaPorID(Integer id){
     	ConcessionariaEAO c = new ConcessionariaEAOImpl();
     	Concessionaria con = new Concessionaria();
     	con = c.getConssecionaria(id);

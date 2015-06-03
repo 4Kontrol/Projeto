@@ -67,13 +67,13 @@ public class ConcessionariaEAOImpl implements ConcessionariaEAO {
     }
 
     @Override
-    public Concessionaria getConssecionaria(Long id) {
+    public Concessionaria getConssecionaria(Integer id) {
         entityManager = dbSingleton.getEntityManager();
         return entityManager.find(Concessionaria.class, id);
     }
 
     @Override
-    public boolean deletar(Long id) {
+    public boolean deletar(Integer id) {
         entityManager = dbSingleton.getEntityManager();
 
         entityManager = dbSingleton.getEntityManager();

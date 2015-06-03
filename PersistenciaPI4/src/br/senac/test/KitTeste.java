@@ -12,6 +12,7 @@ public class KitTeste {
 	
 	public static void main (String [] args){
 		testaInsere();
+                testaExibe();
 	}
 	
 	public static void testaInsere(){
@@ -21,15 +22,17 @@ public class KitTeste {
 		List<Acessorio> lista = new ArrayList<Acessorio>();
 		lista = acessorioEAOImpl.getLista();
 		
-		int conta = 1;
+		int conta = 0;
 		
+                List<Acessorio> listaAcessorio = new ArrayList<Acessorio>();
+                
 		for(Acessorio acessorio : lista){
-			if (conta>=2){
-				kitAcessorio.adicionarAcessorio(acessorio);				
+			if (conta>=5){
+				listaAcessorio.add(acessorio);				
 			}			
 			conta++;
 		}
-		
+		kitAcessorio.setItensDoKit(listaAcessorio);
 		KitEAOImpl eaoImpl = new KitEAOImpl();
 		eaoImpl.cadastrar(kitAcessorio);
 	}

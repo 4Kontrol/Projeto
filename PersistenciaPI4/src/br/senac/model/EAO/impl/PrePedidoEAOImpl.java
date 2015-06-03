@@ -22,7 +22,8 @@ public class PrePedidoEAOImpl implements PrePedidoEAO {
     EntityManager entityManager;
     
     
-    private void cadastrar(PrePedido prePedido) {
+    @Override
+    public void cadastrar(PrePedido prePedido) {
         entityManager = dbSingleton.getEntityManager();
         
         try{
@@ -79,28 +80,5 @@ public class PrePedidoEAOImpl implements PrePedidoEAO {
         }finally{
         	entityManager.close();
         }
-    }
-    
-    //regra de negócio o cliente só podera registrar duas intenções de compra por dia
-    private boolean existemDoisPedidosDoCPFNoMesmoDia(PrePedido prePedido){
-    	entityManager = dbSingleton.getEntityManager();
-    	Query query = entityManager.createNamedQuery("PrePedido.resgatarPedidosDoMesmoCPFNoMesmoDia");
-    	query.setParameter("dataSelecionada", prePedido.getDataEmissaoPedido());
-    	query.setParameter("cpf", prePedido.getCliente().getCpf());    	
-    	if(!query.getResultList().equals(null) && query.getResultList().size()==2){
-    		return true;
-    	}
-    	else
-    		return false;    	
-    }
-    
-    public boolean registrarPrePedido(PrePedido prePedido){    	
-    	if(!existemDoisPedidosDoCPFNoMesmoDia(prePedido)){
-    		cadastrar(prePedido);
-    		return true;
-    	}
-    	else{
-    		return false;
-    	}
     }
 }

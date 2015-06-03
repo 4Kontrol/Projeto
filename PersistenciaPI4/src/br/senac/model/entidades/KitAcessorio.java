@@ -6,9 +6,6 @@
 package br.senac.model.entidades;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -36,67 +33,23 @@ public class KitAcessorio implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "")
-    private Long id;    
+    private Integer id;    
     private String descricao;    
     @ManyToMany
     private List<Acessorio> itensDoKit;
-    private BigDecimal preco;
+    private Double preco;
     
 
     public KitAcessorio() {
 
-    }
+    }    
     
-    private boolean verificaAcessoriosRepetidos (Acessorio acessorio) {
-        for (Acessorio a : this.itensDoKit) {
-            if (a.equals(acessorio)){
-                return true;
-            }
-        }
-        return false;
-    }
 
-    private boolean isFull() {
-        if (this.itensDoKit.size() == 5) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public Acessorio adicionarAcessorio(Acessorio acessorio) {    
-        
-        if (this.itensDoKit!=null){
-            if (!isFull() && !verificaAcessoriosRepetidos(acessorio)) {
-                this.itensDoKit.add(acessorio);
-                this.preco.add(acessorio.getPreco());
-                return acessorio;
-            } else {
-                return null;
-            }
-        }
-        else{
-            instanciarLista();
-            if (!isFull() && !verificaAcessoriosRepetidos(acessorio)) {
-                this.itensDoKit.add(acessorio);
-                this.preco.add(acessorio.getPreco());
-                return acessorio;
-            } else {
-                return null;
-            }
-        }
-    }
-    
-    private List<Acessorio> instanciarLista(){
-       this.itensDoKit = new ArrayList<Acessorio>();
-       return this.itensDoKit;
-    }
-
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -114,21 +67,14 @@ public class KitAcessorio implements Serializable {
 
     public void setItensDoKit(List<Acessorio> itensDoKit) {
         this.itensDoKit = itensDoKit;
-    }
-
-    //retorna o preço do kit com o desconto de 20%
-    public BigDecimal getPrecoVenda(){
-    	BigDecimal cem = new BigDecimal(100);
-        BigDecimal oitenta = new BigDecimal(80);
-        return preco.divide(cem).multiply(oitenta);    	
-    }
+    }    
     
-    //retorna o preço do kit sem o desconto de 20%
-    public BigDecimal getPreco() {
+    
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(BigDecimal preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
     

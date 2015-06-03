@@ -6,8 +6,6 @@
 package br.senac.model.entidades;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,13 +30,13 @@ import javax.persistence.Table;
 public class Acessorio implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String descricao;
-    private BigDecimal preco;
-	public Long getId() {
+    private Double preco;
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getDescricao() {
@@ -48,11 +46,11 @@ public class Acessorio implements Serializable{
 		this.descricao = descricao;
 	}
 
-    public BigDecimal getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(BigDecimal preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }    
 }

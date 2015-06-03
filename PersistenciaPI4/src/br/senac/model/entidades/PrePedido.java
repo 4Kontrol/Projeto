@@ -37,7 +37,7 @@ public class PrePedido implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @ManyToOne
     private Cliente cliente;
     @Temporal(TemporalType.DATE)
@@ -48,86 +48,30 @@ public class PrePedido implements Serializable {
     private KitAcessorio KitDeAcessorios;
     @ManyToMany
     private List<Acessorio> listaDeAcessorios;
-    //situação do prté pedido true=concretizado false=não concretizado
+    //situaï¿½ï¿½o do prtï¿½ pedido true=concretizado false=nï¿½o concretizado
     private boolean situacao;
+    
+    private Double preco;
 
-    public PrePedido(Cliente cliente, Veiculo veiculo){
-        this.cliente = cliente;
-        this.veiculo = veiculo;
-    	dataEmissaoPedido = new Date();
-        setSituacao(false);
+    public Double getPreco() {
+        return preco;
     }
 
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+    
+    
+
+    
     public PrePedido() {
     }   
-    
-    
-    // método de apoio para verificar se o acessorio a ser adicionado não esta em um kit
-    private boolean existeAcessorioNoKit(Acessorio acessorio) {
-        if (!this.KitDeAcessorios.equals(null)) {
-            if (this.KitDeAcessorios.getItensDoKit().contains(acessorio)) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    //método de apoio para verificar se o acessorio a ser adiciona já não está na lista de acessorios
-    private boolean existeAcessorioNaListaAcessorios(Acessorio acessorio) {
-        if (!this.listaDeAcessorios.equals(null)) {
-            if (this.listaDeAcessorios.contains(acessorio)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
-    /*
-    Antes de adicionar um acessorio esse método verifica se o acessorio 
-    já não está presente em algum kit ou na lista de acessorios    
-    */    
-    public Acessorio adicionarAcessorio(Acessorio acessorio) {
-        if (this.listaDeAcessorios.equals(null)){
-            this.listaDeAcessorios = new ArrayList();
-        }else{
-            if (!existeAcessorioNaListaAcessorios(acessorio) && !existeAcessorioNoKit(acessorio)){
-                this.listaDeAcessorios.add(acessorio);
-                return acessorio;
-            }
-            else{
-                return null;
-            }
-        }
-        return null;        
-    }
-    
-    
-    /*
-    esse método verifica se algum item do kit 
-    já não foi adicionado de forma individual na lista de acessorios
-    Caso já tenha sido adicionado o método retorna o acessorio que esta 
-    repetido para exibir ao cliente qual item está repetido
-    Se não houver itens repetidos ele retorna um objeto null  
-    */
-    public Acessorio setKitDeAcessorios(KitAcessorio ListaDekitsDeAcessorios) {
-        for(Acessorio k : ListaDekitsDeAcessorios.getItensDoKit()){
-            if (existeAcessorioNaListaAcessorios(k)) {
-                return k;
-            }
-        }
-        this.KitDeAcessorios = ListaDekitsDeAcessorios;
-        return null;
-    }
-    
-    public KitAcessorio getKitDeAcessorios() {
-        return KitDeAcessorios;
-    }    
-    
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -153,7 +97,15 @@ public class PrePedido implements Serializable {
 
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
-    }    
+    }
+
+    public KitAcessorio getKitDeAcessorios() {
+        return KitDeAcessorios;
+    }
+
+    public void setKitDeAcessorios(KitAcessorio KitDeAcessorios) {
+        this.KitDeAcessorios = KitDeAcessorios;
+    }
 
     public List<Acessorio> getListaDeAcessorios() {
         return listaDeAcessorios;
@@ -170,5 +122,7 @@ public class PrePedido implements Serializable {
     public void setSituacao(boolean situacao) {
         this.situacao = situacao;
     }
+    
+    
 
 }

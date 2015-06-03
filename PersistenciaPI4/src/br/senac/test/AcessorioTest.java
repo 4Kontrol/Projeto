@@ -8,6 +8,8 @@ import br.senac.model.entidades.Acessorio;
 public class AcessorioTest {
 	public static void main (String[] args){
 		testaInsere();
+                testaExibe();
+                testaBuscarPorId(1);
 	}
 	public static void testaInsere(){
 		AcessorioEAOImpl acessorioEAO = new AcessorioEAOImpl();
@@ -28,7 +30,7 @@ public class AcessorioTest {
 	}
 	
 	
-	public static void testaBuscarPorId(Long id){
+	public static void testaBuscarPorId(Integer id){
 		AcessorioEAOImpl acessorioEAO = new AcessorioEAOImpl();
 		Acessorio acessorio = new Acessorio();
 		acessorio = acessorioEAO.getAcessorio(id);
@@ -39,17 +41,17 @@ public class AcessorioTest {
 	public static void testaEditar(){
 		Acessorio acessorio = new Acessorio();		
 		AcessorioEAOImpl acessorioEAO = new AcessorioEAOImpl();
-		acessorio = acessorioEAO.getAcessorio(5L);
+		acessorio = acessorioEAO.getAcessorio(5);
 		System.out.println("Antigo: "+acessorio.getDescricao());
-		acessorio.setDescricao("Descrição alterada!");
+		acessorio.setDescricao("Descriï¿½ï¿½o alterada!");
 		acessorioEAO.editar(acessorio);
-		acessorio = acessorioEAO.getAcessorio(5L);
+		acessorio = acessorioEAO.getAcessorio(5);
 		System.out.println("Nova: "+acessorio.getDescricao());
 	}
         
         public static void testaRemover(){
             AcessorioEAOImpl acessorioEAOImpl = new AcessorioEAOImpl();
-            acessorioEAOImpl.deletar(6L);
+            acessorioEAOImpl.deletar(6);
         }
 	
 }

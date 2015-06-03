@@ -54,13 +54,13 @@ public class AcessorioEAOImpl implements AcessorioEAO {
     }
 
     @Override
-    public Acessorio getAcessorio(Long id) {
+    public Acessorio getAcessorio(Integer id) {
         entityManager = dbSingleton.getEntityManager();               
         return (Acessorio) entityManager.find(Acessorio.class, id);
     }
 
     @Override
-    public boolean deletar(Long id) {
+    public boolean deletar(Integer id) {
         entityManager = dbSingleton.getEntityManager();
         try{            
             entityManager.getTransaction().begin();
