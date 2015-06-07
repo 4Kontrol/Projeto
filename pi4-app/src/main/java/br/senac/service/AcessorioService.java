@@ -12,8 +12,8 @@ public interface AcessorioService {
 
 	public void editar(Acessorio acessorio);
 
-	public Acessorio getAcessorio(Long id);
+	public Acessorio getAcessorio(Integer id);
 
-	public boolean deletar(Long id);
+	public boolean deletar(Integer id);
 
 }

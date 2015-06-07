@@ -32,12 +32,12 @@ public class AcessorioServiceImpl implements AcessorioService{
 		
 	}
 
-	public Acessorio getAcessorio(Long id) {
+	public Acessorio getAcessorio(Integer id) {
 		
 		return null;
 	}
 
-	public boolean deletar(Long id) {
+	public boolean deletar(Integer id) {
 		// TODO Auto-generated method stub
 		return false;
 	}

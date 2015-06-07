@@ -42,7 +42,7 @@ public class AcessorioController {
 	}
 	
 	@RequestMapping("/acessorio/abrirFormulario/{id}")
-	public String editar(Model model, @PathVariable("id") Long id, HttpSession session){
+	public String editar(Model model, @PathVariable("id") Integer id, HttpSession session){
 		
 		Acessorio acessorio = service.getAcessorio(id);
 		
