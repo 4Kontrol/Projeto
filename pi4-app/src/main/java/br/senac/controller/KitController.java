@@ -13,10 +13,15 @@ import br.senac.service.KitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import br.senac.viewmodel.KitAcessorioViewModel;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 ;
 
@@ -39,14 +44,15 @@ public class KitController {
     }
 
     @RequestMapping("/kit/listar")
-    public String abrirLista() {
+    public String abrirLista(Model model) {
+    	model.addAttribute("kits",kitService.getLista());
         return "kit/listar";
     }
 
     @RequestMapping("/kit/efetivarCadastro")
     public String cadastrar(Model model, KitAcessorio kitAcessorio, KitAcessorioViewModel kitAcessorioViewModel) {
 
-        String id[] = new String[]{
+        Integer id[] = new Integer[]{
             kitAcessorioViewModel.getId1(),
             kitAcessorioViewModel.getId2(),
             kitAcessorioViewModel.getId3(),
@@ -58,16 +64,29 @@ public class KitController {
 
         for (int i = 0; i < id.length; i++) {
             
-            if (id[i] != "0"
-                    && id[i] != ""
-                    && !lista.contains((Acessorio) acessorioService.getAcessorio(Integer.valueOf(id[i])))) {
-                lista.add(acessorioService.getAcessorio(Integer.valueOf(id[i])));
+            if (id[i] != 0
+                    && id[i] != null
+                    && !lista.contains((Acessorio) acessorioService.getAcessorio(id[i]))) {
+                lista.add(acessorioService.getAcessorio(id[i]));
             }
         }
         kitAcessorio.setItensDoKit(lista);
         kitService.cadastrar(kitAcessorio);
         model.addAttribute("kits", kitService.getLista());
-        return "kit/formulario";
+        return "kit/listar";
     }
+    
+    @RequestMapping("/kit/abrirFormulario/{id}")
+	public String editar(Model model, @PathVariable("id") Integer id, HttpSession session){
+		
+		KitAcessorio kitAcessorio = kitService.getKitAcessorio(id);
+		
+		
+		//session.setAttribute("kitSessao", kitAcessorio);
+		model.addAttribute("kit", kitAcessorio);
+		
+		return "kit/formulario";
+	
+	}
 
 }

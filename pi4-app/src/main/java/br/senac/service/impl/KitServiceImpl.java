@@ -37,7 +37,7 @@ public class KitServiceImpl implements KitService{
         kitEAO.editar(kitAcessorio);
     }
 
-    public KitAcessorio getAcessorio(Integer id) {
+    public KitAcessorio getKitAcessorio(Integer id) {
         return kitEAO.getKitAcessorio(id);
     }
 

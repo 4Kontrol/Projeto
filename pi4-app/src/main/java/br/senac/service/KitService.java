@@ -20,7 +20,7 @@ public interface KitService {
 
     public void editar(KitAcessorio kitAcessorio);
 
-    public KitAcessorio getAcessorio(Integer id);
+    public KitAcessorio getKitAcessorio(Integer id);
 
     public boolean deletar(Integer id);
 }

@@ -33,7 +33,7 @@ public class KitEAOImpl implements KitEAO {
     @Override
     public List<KitAcessorio> getLista() {
         entityManager = dbSingleton.getEntityManager();
-        Query query = entityManager.createNamedQuery("Acessorio.recuperarTodos");
+        Query query = entityManager.createNamedQuery("KitAcessorio.regastarKits");
         return (List<KitAcessorio>) query.getResultList();
     }
 
