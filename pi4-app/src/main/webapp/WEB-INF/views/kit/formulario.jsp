@@ -5,7 +5,7 @@
 
 <jsp:include page="../cabecalho.jsp"></jsp:include>
 
-<form action="/pi4-app/kit/efetivarCadastro">
+<form action="/pi4-app/kit/efetivarCadastro" method="post">
 	<div class="col-md-3"></div>
     <div class="col-md-6">
         <div class="row"> 
@@ -18,7 +18,7 @@
                 <label for="acessorio1" class="control-label">Acessório 1</label>
                 <div class="form-group">
                     <select class="form-control" name="id1">
-                    <option value="">
+                    <option>
                     --Selecione--
                     </option>
                     <c:forEach var="acessorio" items="${acessorios}">
@@ -34,11 +34,11 @@
                 <label for="acessorio2" class="control-label">Acessório 2</label>
                 <div class="form-group">
                     <select class="form-control" name="id2">
-                    <option value="">
+                    <option>
                     --Selecione--
-                    </option value="${acessorio.id}">
+                    </option>
                     <c:forEach var="acessorio" items="${acessorios}">
-                        <option>
+                        <option value="${acessorio.id}">
                             <c:out value="${acessorio.descricao}"/>
                         </option>
                     </c:forEach>
@@ -50,7 +50,7 @@
                 <label for="acessorio3" class="control-label">Acessório 3</label>
                 <div class="form-group">
                     <select class="form-control" name="id3">
-                    <option value="">
+                    <option>
                     --Selecione--
                     </option>
                     <c:forEach var="acessorio" items="${acessorios}">
@@ -66,7 +66,7 @@
                 <label for="acessorio4" class="control-label">Acessório 4</label>
                 <div class="form-group">
                     <select class="form-control" name="id4">
-                    <option value="${acessorio.id}">
+                    <option>
                     --Selecione--
                     </option>
                     <c:forEach var="acessorio" items="${acessorios}">
@@ -82,7 +82,7 @@
                 <label for="acessorio5" class="control-label">Acessório 5</label>
                 <div class="form-group">
                     <select class="form-control" name="id5">
-                    <option value="${acessorio.id}">
+                    <option>
                     --Selecione--
                     </option>
                     <c:forEach var="acessorio" items="${acessorios}">
@@ -100,7 +100,7 @@
             </div>
             <div class="col-md-12 text-center form-group"   >
     			<input type="reset" value="Cancelar" class="btn btn-danger"/>
-		        <input id="submitForm" type="submit" value="Cadastrar" class="btn btn-primary"/>
+		        <input id="" type="submit" value="Cadastrar" class="btn btn-primary"/>
 			</div>
         </div>
     </div>

@@ -34,7 +34,7 @@ public class AcessorioServiceImpl implements AcessorioService{
 
 	public Acessorio getAcessorio(Integer id) {
 		
-		return null;
+		return acessorioEAO.getAcessorio(id);
 	}
 
 	public boolean deletar(Integer id) {
