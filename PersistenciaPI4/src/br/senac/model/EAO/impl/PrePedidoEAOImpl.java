@@ -67,8 +67,8 @@ public class PrePedidoEAOImpl implements PrePedidoEAO {
        }
     }
 
-    @Override
-    public void editar(PrePedido prePedido) {
+    
+    private void editar(PrePedido prePedido) {
         entityManager = dbSingleton.getEntityManager();
         
         try{
@@ -81,4 +81,16 @@ public class PrePedidoEAOImpl implements PrePedidoEAO {
         	entityManager.close();
         }
     }
+
+	@Override
+	public void aprovar(PrePedido prePedido) {
+		// TODO Auto-generated method stub
+		editar(prePedido);
+	}
+
+	@Override
+	public void reprovar(PrePedido prePedido) {
+		// TODO Auto-generated method stub
+		editar(prePedido);
+	}
 }

@@ -31,7 +31,7 @@ public class ConcessionariaServiceImpl implements ConcessionariaService{
 		
 	}
 
-	public Concessionaria getConssecionaria(Long id) {
+	public Concessionaria getConssecionaria(Integer id) {
 		return concessionariaEAO.getConssecionaria(id);
 	}
 

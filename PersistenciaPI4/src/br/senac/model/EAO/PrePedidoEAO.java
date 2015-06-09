@@ -20,8 +20,10 @@ public interface PrePedidoEAO {
     
     public PrePedido getPrePedido(Integer id);
     
-    public void editar (PrePedido prePedido);
-    
     public boolean deletar (Integer id);
+    
+	public void aprovar(PrePedido prePedido);
+	
+	public void reprovar(PrePedido prePedido);
 
 }
