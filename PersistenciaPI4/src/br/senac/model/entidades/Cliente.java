@@ -6,6 +6,7 @@
 package br.senac.model.entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,6 +34,18 @@ public class Cliente implements Serializable{
     private String cpf;
     @OneToOne
     private Endereco endereco;
+    
+    private Date dataNascimento;
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+    
+    
 
     public Integer getId() {
         return id;
