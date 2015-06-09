@@ -107,7 +107,7 @@ public class KitController {
     
     @RequestMapping("/kit/efetivarEdicao")
     public String confirmarEdicao (Model model,KitAcessorio kitAcessorio, KitAcessorioViewModel kitAcessorioViewModel){
-    	Integer id[] = new Integer[]{
+    	/*Integer id[] = new Integer[]{
                 kitAcessorioViewModel.getId1(),
                 kitAcessorioViewModel.getId2(),
                 kitAcessorioViewModel.getId3(),
@@ -117,8 +117,7 @@ public class KitController {
 
             List<Acessorio> lista = new ArrayList<Acessorio>();
 
-            for (int i = 0; i < id.length; i++) {
-                
+            for (int i = 0; i < id.length; i++) {                
                 if (id[i] != 0
                         && id[i] != null
                         && !lista.contains((Acessorio) acessorioService.getAcessorio(id[i]))) {
@@ -128,7 +127,8 @@ public class KitController {
             kitAcessorio.setItensDoKit(lista);
             kitService.editar(kitAcessorio);
             model.addAttribute("kits", kitService.getLista());
-            return "kit/listar";
+            */return "kit/listar";
+                
     	
     }
 
