@@ -75,8 +75,13 @@ public class PrePedidoController {
 		
 		
 		for(Acessorio a: kitAcessorio.getItensDoKit()){
-			acessorios.remove(a.getId());
+			for(int i = 0; i < acessorios.size(); i++){
+				if(a.getId() == acessorios.get(i).getId()){
+					acessorios.remove(i);
+				}
+			}
 		}
+		
 		httpSession.setAttribute("prePedidoSessao", prePedido);
 		model.addAttribute("acessorios",acessorios);		
 		

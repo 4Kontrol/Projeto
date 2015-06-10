@@ -12,7 +12,7 @@ public class KitTeste {
 	
 	public static void main (String [] args){
 		testaInsere();
-                testaExibe();
+               
 	}
 	
 	public static void testaInsere(){
@@ -33,6 +33,7 @@ public class KitTeste {
 			conta++;
 		}
 		kitAcessorio.setItensDoKit(listaAcessorio);
+		kitAcessorio.setPreco(15D);
 		KitEAOImpl eaoImpl = new KitEAOImpl();
 		eaoImpl.cadastrar(kitAcessorio);
 	}

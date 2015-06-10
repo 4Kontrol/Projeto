@@ -8,12 +8,11 @@ import br.senac.model.entidades.Acessorio;
 public class AcessorioTest {
 	public static void main (String[] args){
 				testaInsere();
-                testaExibe();
-                testaBuscarPorId(1);
+               
 	}
 	public static void testaInsere(){
 		AcessorioEAOImpl acessorioEAO = new AcessorioEAOImpl();
-		for	(int i = 0 ; i<25;i++){
+		for	(int i = 0 ; i<9;i++){
 			Acessorio acessorio = new Acessorio();
 			acessorio.setDescricao("Acessorio"+i);
 			acessorio.setPreco(i+0.5);
