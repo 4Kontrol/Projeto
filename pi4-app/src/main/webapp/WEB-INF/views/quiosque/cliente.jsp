@@ -9,33 +9,10 @@
 		</div>
 		<br>
 		<br>
-
-		<div class="col-md-3">
-			<div class="col-md-12 text-center">
-				<h4>
-					<strong>Já sou cadastrado</strong>
-				</h4>
-			</div>
-			<form action="">
-				<div class="form-group">
-					<input type="text" id="cpf" class="form-control" placeholder="CPF" />
-				</div>
-				<div class="text-center">
-					<input type="submit" class="btn btn-success" id="enviar"
-						value="Finaizar pedido" />
-				</div>
-			</form>
-		</div>
-
 		<div class="col-md-1"></div>
 
 		<div class="col-md-8">
-			<div class="col-md-12 text-center">
-				<h4>
-					<strong>Não tenho cadastro</strong>
-				</h4>
-			</div>
-			<form action="">
+			<form action="/pi4-app/quiosque/finalizarPrepedido" method="post">
 				<div class="form-group">
 					<input class="form-control" type="text" name="nome"
 						placeholder="Nome" id="Nome" />
@@ -73,10 +50,8 @@
 						placeholder="Estado" id="estado" />
 				</div>
 				<div class="form-group text-center">
-					<input type="reset" class="btn btn-danger" value="Cancelar" /> <input
-						type="submit" class="btn btn-inverse"
-						value="Cadastrar e finalizar pedido" />
-				</div>
+					<input type="reset" class="btn btn-danger" value="Cancelar" /> 
+					<input type="submit" class="btn btn-inverse" value="Cadastrar e finalizar pedido" />
 			</form>
 		</div>
 	</div>

@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.senac.model.entidades.Acessorio;
+import br.senac.model.entidades.Cliente;
 import br.senac.model.entidades.KitAcessorio;
 import br.senac.model.entidades.PrePedido;
 import br.senac.model.entidades.Veiculo;
 import br.senac.service.AcessorioService;
 import br.senac.service.KitService;
+import br.senac.service.PrePedidosService;
 import br.senac.service.VeiculoService;
 
 @Controller
@@ -33,6 +35,9 @@ public class PrePedidoController {
 	
 	@Autowired
 	private AcessorioService acessorioService;
+	
+	@Autowired
+	private PrePedidosService prePedidoService;
 	
 	@RequestMapping("/quiosque/iniciar")
 	public String inicar(){
@@ -113,14 +118,37 @@ public class PrePedidoController {
 		return "quiosque/prePedido";
 	}
 	
+	@RequestMapping("quiosque/cadastrarCliente")
+	public String efetivarPrepedido(Model model, HttpSession session){
+
+		return "quiosque/cliente";
+	}
+	
+	@RequestMapping("quiosque/finalizarPrepedido")
+	public String finalizarPrepedido(Model model, HttpSession session, Cliente cliente){
+		
+		PrePedido prePedido = (PrePedido) session.getAttribute("prePedidoSessao");
+		prePedido.setCliente(cliente);
+		
+		prePedidoService.gerar(prePedido);
+		
+		model.addAttribute("prePedido",prePedido);
+		model.addAttribute("kit",prePedido.getKitDeAcessorios());
+		model.addAttribute("acessorios",prePedido.getListaDeAcessorios());
+		model.addAttribute("veiculo",prePedido.getVeiculo());
+		model.addAttribute("cliente", cliente);
+		
+		
+		//mudar para tela que exibi todo o prepedido agora com as informações do cliente e com botão de imprimir e de inicio
+		return "quiosque/iniciar";
+	}
+	
 	private static Double calcularTotal(PrePedido prePedido){
 		Double total = 0D;
 		for(Acessorio a : prePedido.getListaDeAcessorios()){
 			total = total + a.getPreco();
 		}
-		for(Acessorio a : prePedido.getKitDeAcessorios().getItensDoKit()){
-			total = total + a.getPreco();			
-		}
+		total = total + prePedido.getKitDeAcessorios().getPreco();
 		total = total + prePedido.getVeiculo().getPreco();
 		return total;
 	}

@@ -91,8 +91,8 @@
 		</div>
 		
 		<div class="text-center col-md-12">
-			<input type="button" class="btn btn-danger" value="Cancelar" /> <input
-				type="button" class="btn btn-inverse" value="Finalizar pedido" />
+			<input type="button" class="btn btn-danger" value="Cancelar" /> 
+			<a href="/pi4-app/quiosque/cadastrarCliente"><input type="button" class="btn btn-inverse" value="Finalizar pedido" /></a>
 		</div>
 	</div>
 </div>
