@@ -6,6 +6,7 @@
 
 package br.senac.test;
 
+import br.senac.model.EAO.impl.ConcessionariaEAOImpl;
 import br.senac.model.EAO.impl.VeiculoEAOImpl;
 import br.senac.model.entidades.Veiculo;
 
@@ -20,6 +21,7 @@ public class VeiculoTest {
     }
     public static void testaInsere(){
         Veiculo veiculo = new Veiculo();
+        ConcessionariaEAOImpl concessionariaEAOImpl = new ConcessionariaEAOImpl();
         VeiculoEAOImpl veiculoEAOImpl = new VeiculoEAOImpl();
         veiculo.setModelo("Gol");
         veiculo.setAno("2007");
@@ -35,6 +37,7 @@ public class VeiculoTest {
         veiculo.setPreco(2000D);
         veiculo.setSom("MP3");
         veiculo.setVelocidade(300);
+        veiculo.setConcessionaria(concessionariaEAOImpl.getConssecionaria(1));
         veiculoEAOImpl.cadastrar(veiculo);
     }
     

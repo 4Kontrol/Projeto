@@ -7,10 +7,12 @@ package br.senac.model.entidades;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -43,8 +45,18 @@ public class Veiculo implements Serializable{
     private String som;
     private String capacidade;
     private Double preco;
+    @ManyToOne
+    private Concessionaria concessionaria;
 
-    public Integer getId() {
+    public Concessionaria getConcessionaria() {
+		return concessionaria;
+	}
+
+	public void setConcessionaria(Concessionaria concessionaria) {
+		this.concessionaria = concessionaria;
+	}
+
+	public Integer getId() {
         return id;
     }
 
