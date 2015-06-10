@@ -6,6 +6,12 @@
 			<h3>
 				<strong>Detalhes do pedido</strong>
 			</h3>
+			<div>
+			<strong>Data de Emissão: </strong>${prePedido.dataEmissaoPedido}
+			</div>
+			<div>
+				<strong>Cliente: </strong>${cliente.nome}
+			</div>	
 		</div>
 		<div class="col-md-4">
 			<img class="img-responsive" src="<c:url value='/resources/img/veiculos/${veiculo.imagem}'/>"
@@ -90,9 +96,10 @@
 			</div>
 		</div>
 		
+		
 		<div class="text-center col-md-12">
-			<a href="/pi4-app/quiosque/selecaoAcessorios/${kit.id}"><input type="button" class="btn btn-danger" value="Voltar" /></a>
-			<a href="/pi4-app/quiosque/cadastrarCliente"><input type="button" class="btn btn-inverse" value="Próximo" /></a>
+			<a href="/pi4-app/quiosque/iniciar"><input type="button" class="btn btn-danger" value="Início" /></a>
+			<a href="/pi4-app/quiosque/cadastrarCliente"><input type="button" class="btn btn-inverse" value="Imprimir"/></a>
 		</div>
 	</div>
 </div>

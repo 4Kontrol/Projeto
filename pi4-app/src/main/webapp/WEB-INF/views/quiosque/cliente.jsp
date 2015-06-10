@@ -22,7 +22,7 @@
 						placeholder="CPF" id="cpf2" />
 				</div>
 				<div class="form-group">
-					<input class="form-control" type="date" name="dataNascimento"
+					<input class="form-control" type="date" name="dataNascimentoText"
 						placeholder="dd/mm/aaaa" id="dataNascimento" />
 				</div>
 				<div class="form-group">
@@ -49,9 +49,10 @@
 					<input class="form-control" type="text" name="estado"
 						placeholder="Estado" id="estado" />
 				</div>
-				<div class="form-group text-center">
+				<div class="form-group text-center col-md-12">
 					<input type="reset" class="btn btn-danger" value="Cancelar" /> 
 					<input type="submit" class="btn btn-inverse" value="Cadastrar e finalizar pedido" />
+				</div>
 			</form>
 		</div>
 	</div>

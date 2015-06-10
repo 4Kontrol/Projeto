@@ -23,8 +23,8 @@
                 
                 
                 <div class="text-center col-md-12">
-	                <input type="button" class="btn btn-danger" value="Cancelar"/>
-	                <input type="submit" class="btn btn-inverse" value="Finalizar pedido"/>
+	                <a href="/pi4-app/quiosque/selecaoKit"><input type="button" class="btn btn-danger" value="Cancelar"/></a>
+	                <input type="submit" class="btn btn-inverse" value="Próximo"/>
             	</div>
 
                 

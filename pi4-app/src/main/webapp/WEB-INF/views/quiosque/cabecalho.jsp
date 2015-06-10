@@ -10,17 +10,17 @@
 	user-scalable="no">
 <script type="text/javascript"
 	src="<c:url value="/resources/js/jquery-2.1.1.js"/>"></script>
-<link rel="stylesheet"
+<link media="all" rel="stylesheet"
 	href="<c:url value="/resources/css/bootstrap.min.css"/>" />
-<link rel="stylesheet"
+<link media="all" rel="stylesheet"
 	href="<c:url value="/resources/css/material.min.css"/>" />
-<link rel="stylesheet"
+<link media="all" rel="stylesheet"
 	href="<c:url value="/resources/css/ripples.min.css"/>" />
-<link rel="stylesheet"
+<link media="all" rel="stylesheet"
 	href="<c:url value="/resources/css/roboto.min.css"/>" />
-<link rel="stylesheet"
+<link media="all" rel="stylesheet"
 	href="<c:url value="/resources/css/material-fullpalette.min.css"/>" />
-<link rel="stylesheet"
+<link media="all" rel="stylesheet"
 	href="<c:url value="/resources/css/bootstrap-switch-modificado.css"/>" />
 <script type="text/javascript"
 	src="<c:url value="/resources/js/bootstrap-switch.js"/>"></script>
@@ -30,7 +30,7 @@
 	src="<c:url value="/resources/js/material.min.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/ripples.min.js"/>"></script>
-<link rel="stylesheet"
+<link media="all" rel="stylesheet"
 	href="<c:url value="/resources/css/my_style.css"/>" />
 <script type="text/javascript"
 	src="<c:url value="/resources/js/maskMoney.js"/>">

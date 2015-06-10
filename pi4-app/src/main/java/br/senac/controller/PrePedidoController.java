@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.senac.model.entidades.Acessorio;
 import br.senac.model.entidades.Cliente;
+import br.senac.model.entidades.Endereco;
 import br.senac.model.entidades.KitAcessorio;
 import br.senac.model.entidades.PrePedido;
 import br.senac.model.entidades.Veiculo;
@@ -125,9 +126,11 @@ public class PrePedidoController {
 	}
 	
 	@RequestMapping("quiosque/finalizarPrepedido")
-	public String finalizarPrepedido(Model model, HttpSession session, Cliente cliente){
-		
+	public String finalizarPrepedido(Model model, HttpSession session, Cliente cliente, Endereco endereco){
+		cliente.setEndereco(endereco);
 		PrePedido prePedido = (PrePedido) session.getAttribute("prePedidoSessao");
+		
+		
 		prePedido.setCliente(cliente);
 		
 		prePedidoService.gerar(prePedido);
@@ -140,7 +143,7 @@ public class PrePedidoController {
 		
 		
 		//mudar para tela que exibi todo o prepedido agora com as informações do cliente e com botão de imprimir e de inicio
-		return "quiosque/iniciar";
+		return "quiosque/imprimir";
 	}
 	
 	private static Double calcularTotal(PrePedido prePedido){
