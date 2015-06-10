@@ -102,9 +102,9 @@
 								<li><a href="/pi4-app/acessorio/abrirFormulario"
 									id="cadastrarAcessorios">Cadastrar Acessórios</a></li>
 								<li class="divider"></li>
-								<li><a href="javascript:void(0)" id="listarKits">Listar
+								<li><a href="/pi4-app/kit/listar" id="listarKits">Listar
 										Kits</a></li>
-								<li><a href="javascript:void(0)" id="cadastrarKits">Cadastrar
+								<li><a href="/pi4-app/kit/abrirFormulario" id="cadastrarKits">Cadastrar
 										Kits</a></li>
 							</ul></li>
 					</ul>
@@ -114,7 +114,7 @@
 						</div>
 					</form>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="javascript:void(0)">Relatórios</a></li>
+						<li><a href="/pi4-app/relatorios/menu">Relatórios</a></li>
 						<li class="dropdown"><a href="javascript:void(0)"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
 							aria-expanded="false">Usuário<span class="caret"></span></a>

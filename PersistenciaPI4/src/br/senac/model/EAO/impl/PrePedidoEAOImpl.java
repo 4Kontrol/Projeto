@@ -103,7 +103,7 @@ public class PrePedidoEAOImpl implements PrePedidoEAO {
 	public List<PrePedido> listarPrePedidosEmAberto(Integer id){
 		entityManager = dbSingleton.getEntityManager();
 		Query query = entityManager.createNamedQuery("PrePedido.resgatarPedidosConcessionaria");
-		query.setParameter("id", id);
+		query.setParameter("idConcessionaria", id);
 		return (List<PrePedido>) query.getResultList();
 	}
 	

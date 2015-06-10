@@ -126,8 +126,8 @@ public class PrePedidoController {
 	}
 	
 	@RequestMapping("quiosque/finalizarPrepedido")
-	public String finalizarPrepedido(Model model, HttpSession session, Cliente cliente, Endereco endereco){
-		cliente.setEndereco(endereco);
+	public String finalizarPrepedido(Model model, HttpSession session, Cliente cliente){
+		
 		PrePedido prePedido = (PrePedido) session.getAttribute("prePedidoSessao");
 		
 		
@@ -156,12 +156,29 @@ public class PrePedidoController {
 		return total;
 	}
 	
-	@RequestMapping("quiosque/concessionaria/listarPedidos/{id}")
-	public String listaPedidos(@PathVariable("id") Integer id,Model model){
+	@RequestMapping("quiosque/concessionaria/listarPedidos")
+	public String listaPedidos(Model model){
 		
-		model.addAttribute("prePedidos",prePedidoService.getPedidosEmAbertoConcessionaria(id));
+		model.addAttribute("prePedidos",prePedidoService.getPedidosEmAbertoConcessionaria(1));
 		
-		return "quisosque/listarPedidos";
+		return "quiosque/listarPedidos";
+	}
+	
+	@RequestMapping("concessionaria/menu")
+	public String menuConcessionaria(){
+		return "quiosque/concessionariaMenu";
+	}
+	
+	@RequestMapping("quiosque/concessionaria/exibirPrePedido/{id}")
+	public String exibirPrePedido(@PathVariable("id") Integer id,Model model){
+		PrePedido prePedido = prePedidoService.getPrePedido(id);
+		
+		model.addAttribute("veiculo",prePedido.getVeiculo());
+		model.addAttribute("cliente",prePedido.getCliente());
+		model.addAttribute("acessorios",prePedido.getListaDeAcessorios());
+		model.addAttribute("kit",prePedido.getKitDeAcessorios());
+		model.addAttribute("prePedido",prePedido);
+		return "";
 	}
 	
 }

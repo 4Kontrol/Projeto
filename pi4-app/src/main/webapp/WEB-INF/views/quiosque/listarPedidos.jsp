@@ -15,7 +15,7 @@
                         <th>Valor</th>
                         <th>Ações</th>
                     </tr>
-                    <c:forEach var"pedido" items="${pedidos}">
+                    <c:forEach var="pedido" items="${pedidos}">
                     <tr>
                         <td>${pedido.id}</td>
                         <td>${pedido.dataEmissaoPedido}</td>
@@ -23,7 +23,7 @@
                         <td>${pedido.veiculo.modelo}</td>
                         <td>R$ ${pedido.preco}</td>
                         <td><a
-                                href="#">Cancelar</a>&nbsp &nbsp &nbsp<a
+                                href="">Cancelar</a>&nbsp &nbsp &nbsp<a
                                 href="#">Exibir</a></td>
                     </tr>
                     </c:forEach>
