@@ -25,3 +25,10 @@ th{
 #tabela{
     display: none;
 }
+.controlKit{
+	height: 235px;	 
+}
+
+.controlAcessorio{
+	height: 100px;	
+}

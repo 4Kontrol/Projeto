@@ -24,7 +24,7 @@
                 </div>
 
 		<c:forEach var="kit" items="${kits}">
-                <div class="col-md-3">
+                <div class="col-md-3 controlKit">
                     <div class="col-md-12">
                         <div class="form-group">
                             <div class="radio radio-primary">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
           </c:forEach>
-                <div class="text-center">
+                <div class="text-center col-md-12">
 	                <input type="button" class="btn btn-danger" value="Cancelar"/>
 	                <input type="submit" class="btn btn-primary" value="Adicionar acessórios"/>
 	                <input type="button" class="btn btn-inverse" value="Finalizar pedido"/>

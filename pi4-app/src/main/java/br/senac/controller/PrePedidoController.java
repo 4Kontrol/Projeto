@@ -1,6 +1,7 @@
 package br.senac.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -72,6 +73,8 @@ public class PrePedidoController {
 		prePedido.setKitDeAcessorios(kitAcessorio);
 		Veiculo veiculo = (Veiculo)httpSession.getAttribute("veiculoSessao");
 		prePedido.setVeiculo(veiculo);
+		Date data = new Date();
+		prePedido.setDataEmissaoPedido(data);
 		
 		List<Acessorio> acessorios = acessorioService.getLista();
 		
@@ -99,8 +102,27 @@ public class PrePedidoController {
 		for(String id : acessorio){
 			prePedido.getListaDeAcessorios().add(acessorioService.getAcessorio(Integer.valueOf(id)));
 		}
+		prePedido.setPreco(calcularTotal(prePedido));
+		httpSession.setAttribute("prePedidoSessao", prePedido);
 		
-		return "";
+		model.addAttribute("prePedido",prePedido);
+		model.addAttribute("kit",prePedido.getKitDeAcessorios());
+		model.addAttribute("acessorios",prePedido.getListaDeAcessorios());
+		model.addAttribute("veiculo",prePedido.getVeiculo());
+		
+		return "quiosque/prePedido";
+	}
+	
+	private static Double calcularTotal(PrePedido prePedido){
+		Double total = 0D;
+		for(Acessorio a : prePedido.getListaDeAcessorios()){
+			total = total + a.getPreco();
+		}
+		for(Acessorio a : prePedido.getKitDeAcessorios().getItensDoKit()){
+			total = total + a.getPreco();			
+		}
+		total = total + prePedido.getVeiculo().getPreco();
+		return total;
 	}
 	
 }

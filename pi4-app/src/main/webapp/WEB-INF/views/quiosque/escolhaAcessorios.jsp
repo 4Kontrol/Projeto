@@ -6,7 +6,7 @@
             <form action="/pi4-app/quiosque/exibirPrePedido">
                 <div class="col-md-12 text-center"><h3><strong>Seleção de acessórios</strong></h3></div>
                 <c:forEach var="acessorio" items="${acessorios}" >
-                <div class="col-md-2">
+                <div class="col-md-2 controlAcessorio">
                     <div class="col-md-12">
                         <div class="form-group">
                             <div class="checkbox checkbox-material">
@@ -22,7 +22,7 @@
                 </c:forEach>
                 
                 
-                <div class="text-center">
+                <div class="text-center col-md-12">
 	                <input type="button" class="btn btn-danger" value="Cancelar"/>
 	                <input type="submit" class="btn btn-inverse" value="Finalizar pedido"/>
             	</div>
