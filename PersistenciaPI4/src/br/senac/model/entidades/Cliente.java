@@ -31,6 +31,7 @@ public class Cliente implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
+    private String sexo;
     private String cpf;
     @OneToOne
     private Endereco endereco;
@@ -47,7 +48,15 @@ public class Cliente implements Serializable{
     
     
 
-    public Integer getId() {
+    public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public Integer getId() {
         return id;
     }
 

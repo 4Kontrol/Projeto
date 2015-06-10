@@ -32,7 +32,8 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "PrePedido.resgatarTodos", query = "SELECT p FROM PrePedido p"),
     @NamedQuery(name = "PrePedido.resgatarPorId", query = "SELECT p FROM PrePedido p WHERE p.id=:id"),
     @NamedQuery(name = "PrePedido.resgatarPedidosDoMesmoCPFNoMesmoDia", query = "SELECT p FROM PrePedido p WHERE p.dataEmissaoPedido=:dataSelecionada and p.cliente.cpf=:cpf"),
-    @NamedQuery(name = "PrePedido.resgatarPedidosConcessionaria", query="SELECT p FROM PrePedido p WHERE p.veiculo.concessionaria.id=:idConcessionaria and p.situacao=false")
+    @NamedQuery(name = "PrePedido.resgatarPedidosConcessionaria", query="SELECT p FROM PrePedido p WHERE p.veiculo.concessionaria.id=:idConcessionaria and p.situacao=false"),
+    
 })
 public class PrePedido implements Serializable {
 

@@ -22,6 +22,12 @@
 						placeholder="CPF" id="cpf2" />
 				</div>
 				<div class="form-group">
+					<select id="sexo" name="sexo" class="form-control">
+						<option value="Feminino">Feminino</option>
+						<option value="Masculino">Masculino</option>						
+					</select>
+				</div>
+				<div class="form-group">
 					<input class="form-control" type="date" name="dataNascimentoText"
 						placeholder="dd/mm/aaaa" id="dataNascimento" />
 				</div>

@@ -106,4 +106,6 @@ public class PrePedidoEAOImpl implements PrePedidoEAO {
 		query.setParameter("id", id);
 		return (List<PrePedido>) query.getResultList();
 	}
+	
+	
 }
