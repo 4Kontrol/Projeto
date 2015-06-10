@@ -1,5 +1,6 @@
 package br.senac.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -86,6 +88,19 @@ public class PrePedidoController {
 		model.addAttribute("acessorios",acessorios);		
 		
 		return "quiosque/escolhaAcessorios";
+	}
+	
+	@RequestMapping("quiosque/exibirPrePedido")
+	public String exibirPrePedido(Model model, HttpSession httpSession, String[] acessorio){
+		
+		PrePedido prePedido = (PrePedido) httpSession.getAttribute("prePedidoSessao");
+		
+		prePedido.setListaDeAcessorios(new ArrayList<Acessorio>());
+		for(String id : acessorio){
+			prePedido.getListaDeAcessorios().add(acessorioService.getAcessorio(Integer.valueOf(id)));
+		}
+		
+		return "";
 	}
 	
 }
