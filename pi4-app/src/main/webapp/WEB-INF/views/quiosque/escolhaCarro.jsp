@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="cabecalho.jsp"></jsp:include> 
 
 <div class="jumbotron">
@@ -61,153 +62,23 @@
 
     </div>
     <br>
+    
+    
 
     <div class="row text-left">
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/207.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>Peugeot 207</div>
-            <div><strong>Marca: </strong>Peugeot</div>
-            <div><strong>Ano: </strong>2006</div>
-            <div><strong>Cor: </strong>Branco</div>
-            <div><strong>Preço: R$</strong>27.000</div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/agile.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>Agile</div>
-            <div><strong>Marca: </strong>Chevrolet</div>
-            <div><strong>Ano: </strong>2009</div>
-            <div><strong>Cor: </strong>Amarelo</div>
-            <div><strong>Preço: R$</strong>45.000</div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/celta.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>Celta</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/city.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>City</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/clio.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>Clio</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/fiesta.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>Fiesta</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/fit.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>Fit</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/fox.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>Fox</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/gol.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>Gol</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/j3.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>J3</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/ka.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>KA</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/onix.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>Onix</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/palio.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>Palio</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/prisma.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>Prisma</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/uno.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>Uno</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/ferrari.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>Ferrari</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/fusca.jpg" id="car" alt=""/><br>
-            <div><strong>Modelo: </strong>Fusca</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-        <div class="col-md-2 car">
-            <img class="img-responsive" src="img/tumbler.jpg" alt=""/><br>
-            <div><strong>Modelo: </strong>Tumbler - (Disponível apenas para o Batman)</div>
-            <div><strong>Marca: </strong> </div>
-            <div><strong>Ano: </strong> </div>
-            <div><strong>Cor: </strong> </div>
-            <div><strong>Preço: R$</strong> </div>
-        </div>
-</div>
+    	<c:forEach var="veiculo" items="${veiculos}">
+	        <a href="/pi4-app/quiosque/detalhes/${veiculo.id}">
+	        	<div class="col-md-2 car">	        	
+	            <img class="img-responsive" src="<c:url value='/resources/img/veiculos/${veiculo.imagem}'/>" alt=""/><br>
+	            <div><strong>Modelo: </strong>${veiculo.modelo}</div>
+	            <div><strong>Marca: </strong>${veiculo.marca}</div>
+	            <div><strong>Ano: </strong>${veiculo.ano}</div>
+	            <div><strong>Cor: </strong>${veiculo.cor}</div>
+	            <div><strong>Preço: R$</strong>${veiculo.preco}</div>
+	        </div>
+	        </a>
+        </c:forEach>        
+	</div>
 
 
 <nav>

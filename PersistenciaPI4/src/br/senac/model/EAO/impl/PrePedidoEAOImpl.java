@@ -9,14 +9,19 @@ package br.senac.model.EAO.impl;
 import br.senac.model.EAO.PrePedidoEAO;
 import br.senac.model.entidades.PrePedido;
 import br.senac.util.dbSingleton;
+
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Geovan
  */
+@Component
 public class PrePedidoEAOImpl implements PrePedidoEAO {
 
     EntityManager entityManager;

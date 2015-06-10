@@ -3,11 +3,13 @@ package br.senac.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import br.senac.model.EAO.PrePedidoEAO;
 import br.senac.model.entidades.PrePedido;
 import br.senac.service.PrePedidosService;
 
+@Component
 public class PrePedidosServiceImpl implements PrePedidosService{
 
 	@Autowired

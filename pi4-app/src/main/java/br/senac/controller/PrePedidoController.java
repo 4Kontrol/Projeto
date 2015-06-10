@@ -1,0 +1,86 @@
+package br.senac.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import br.senac.model.entidades.Acessorio;
+import br.senac.model.entidades.KitAcessorio;
+import br.senac.model.entidades.PrePedido;
+import br.senac.model.entidades.Veiculo;
+import br.senac.service.AcessorioService;
+import br.senac.service.KitService;
+import br.senac.service.VeiculoService;
+
+@Controller
+public class PrePedidoController {
+	
+	@Autowired
+	private VeiculoService veiculoService;
+	
+	@Autowired
+	private KitService kitService;
+	
+	@Autowired
+	private AcessorioService acessorioService;
+	
+	@RequestMapping("/quiosque/iniciar")
+	public String inicar(){
+		return "quiosque/iniciar";
+	}
+	
+	@RequestMapping("/quiosque/veiculos")
+	public String listarVeiculos(Model model, HttpSession httpSession){
+		
+		List <Veiculo> lista = veiculoService.getLista();
+		httpSession.setAttribute("veiculosSessao", lista);
+		model.addAttribute("veiculos",lista);
+		return "quiosque/escolhaCarro";
+	}
+	
+	@RequestMapping("/quiosque/detalhes/{id}")
+	public String detalharVeiculo(@PathVariable("id") Integer id, Model model, HttpSession httpSession){
+		
+		Veiculo veiculo = veiculoService.getVeiculo(id);
+		model.addAttribute("veiculo", veiculo);
+		httpSession.setAttribute("veiculoSessao", veiculo);
+		return "quiosque/detalhesCarro";
+	}
+	
+	@RequestMapping("/quiosque/selecaoKit")
+	public String selecionarKit(Model model, HttpSession httpSession){		
+		List<KitAcessorio> kits = kitService.getLista();
+		
+		model.addAttribute("kits",kits);
+				
+		return "quiosque/escolhaKit";
+	}
+	
+	@RequestMapping("quiosque/selecaoAcessorios/{id}")
+	public String adicionarAcessorio(Model model, HttpSession httpSession, @PathVariable("id") Integer id){
+		PrePedido prePedido = new PrePedido();
+		KitAcessorio kitAcessorio = kitService.getKitAcessorio(id);
+		prePedido.setKitDeAcessorios(kitAcessorio);
+		Veiculo veiculo = (Veiculo)httpSession.getAttribute("veiculoSessao");
+		prePedido.setVeiculo(veiculo);
+		
+		List<Acessorio> acessorios = acessorioService.getLista();
+		
+		
+		for(Acessorio a: kitAcessorio.getItensDoKit()){
+			acessorios.remove(a.getId());
+		}
+		httpSession.setAttribute("prePedidoSessao", prePedido);
+		model.addAttribute("acessorios",acessorios);		
+		
+		return "quiosque/escolhaAcessorios";
+	}
+	
+}

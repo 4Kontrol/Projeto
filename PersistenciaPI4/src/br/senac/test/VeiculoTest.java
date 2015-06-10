@@ -21,7 +21,20 @@ public class VeiculoTest {
     public static void testaInsere(){
         Veiculo veiculo = new Veiculo();
         VeiculoEAOImpl veiculoEAOImpl = new VeiculoEAOImpl();
-        veiculo.setModelo("Celta");
+        veiculo.setModelo("Gol");
+        veiculo.setAno("2007");
+        veiculo.setCambio("Automático");
+        veiculo.setCapacidade("5");
+        veiculo.setCombustivel("Flex");
+        veiculo.setCor("Vermelho");
+        veiculo.setEstofado("Prata");
+        veiculo.setImagem("gol.jpg");
+        veiculo.setMarca("Volkswagem");
+        veiculo.setPortas(4);
+        veiculo.setPotencia("4 cavalos");
+        veiculo.setPreco(2000D);
+        veiculo.setSom("MP3");
+        veiculo.setVelocidade(300);
         veiculoEAOImpl.cadastrar(veiculo);
     }
     
