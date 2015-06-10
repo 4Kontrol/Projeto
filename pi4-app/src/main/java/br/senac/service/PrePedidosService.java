@@ -15,4 +15,6 @@ public interface PrePedidosService {
 	public void aprovar(PrePedido prePedido);
 	
 	public void reprovar(PrePedido prePedido);
+	
+	public List<PrePedido> getPedidosEmAbertoConcessionaria(Integer id);
 }

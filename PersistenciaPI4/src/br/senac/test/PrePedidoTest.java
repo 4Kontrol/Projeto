@@ -12,6 +12,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Hours;
 
 import br.senac.model.EAO.impl.ClienteEAOImpl;
+import br.senac.model.EAO.impl.KitEAOImpl;
 import br.senac.model.EAO.impl.PrePedidoEAOImpl;
 import br.senac.model.EAO.impl.VeiculoEAOImpl;
 import br.senac.model.entidades.PrePedido;
@@ -30,10 +31,12 @@ public class PrePedidoTest {
     	
     	PrePedidoEAOImpl prePedidoEAOImpl = new PrePedidoEAOImpl();
     	ClienteEAOImpl clienteEAOImpl = new ClienteEAOImpl();
-    	VeiculoEAOImpl veiculoEAOImpl = new VeiculoEAOImpl();    	
+    	VeiculoEAOImpl veiculoEAOImpl = new VeiculoEAOImpl();
+    	KitEAOImpl kitAcessorioEAOImpl = new KitEAOImpl();
     	PrePedido prePedido = new PrePedido();
     	prePedido.setCliente(clienteEAOImpl.getCliente(2));
         prePedido.setVeiculo(veiculoEAOImpl.getVeiculo(2));
+        prePedido.setKitDeAcessorios(kitAcessorioEAOImpl.getKitAcessorio(4));        
     	prePedidoEAOImpl.cadastrar(prePedido);
     }
     

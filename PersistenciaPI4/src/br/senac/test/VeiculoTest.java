@@ -30,14 +30,14 @@ public class VeiculoTest {
         veiculo.setCombustivel("Flex");
         veiculo.setCor("Vermelho");
         veiculo.setEstofado("Prata");
-        veiculo.setImagem("gol.jpg");
+        veiculo.setImagem("207.jpg");
         veiculo.setMarca("Volkswagem");
         veiculo.setPortas(4);
         veiculo.setPotencia("4 cavalos");
         veiculo.setPreco(2000D);
         veiculo.setSom("MP3");
         veiculo.setVelocidade(300);
-        veiculo.setConcessionaria(concessionariaEAOImpl.getConssecionaria(1));
+        veiculo.setConcessionaria(concessionariaEAOImpl.getConssecionaria(2));
         veiculoEAOImpl.cadastrar(veiculo);
     }
     

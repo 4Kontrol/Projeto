@@ -156,4 +156,12 @@ public class PrePedidoController {
 		return total;
 	}
 	
+	@RequestMapping("quiosque/concessionaria/listarPedidos/{id}")
+	public String listaPedidos(@PathVariable("id") Integer id,Model model){
+		
+		model.addAttribute("prePedidos",prePedidoService.getPedidosEmAbertoConcessionaria(id));
+		
+		return "quisosque/listarPedidos";
+	}
+	
 }

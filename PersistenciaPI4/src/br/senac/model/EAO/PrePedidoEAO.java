@@ -6,6 +6,7 @@
 package br.senac.model.EAO;
 
 import br.senac.model.entidades.PrePedido;
+
 import java.util.List;
 
 /**
@@ -25,5 +26,7 @@ public interface PrePedidoEAO {
 	public void aprovar(PrePedido prePedido);
 	
 	public void reprovar(PrePedido prePedido);
+	
+	public List<PrePedido> listarPrePedidosEmAberto(Integer id);
 
 }

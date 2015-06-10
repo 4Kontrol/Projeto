@@ -98,4 +98,12 @@ public class PrePedidoEAOImpl implements PrePedidoEAO {
 		// TODO Auto-generated method stub
 		editar(prePedido);
 	}
+	
+	@Override
+	public List<PrePedido> listarPrePedidosEmAberto(Integer id){
+		entityManager = dbSingleton.getEntityManager();
+		Query query = entityManager.createNamedQuery("PrePedido.resgatarPedidosConcessionaria");
+		query.setParameter("id", id);
+		return (List<PrePedido>) query.getResultList();
+	}
 }

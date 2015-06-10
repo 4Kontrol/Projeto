@@ -40,4 +40,10 @@ public class PrePedidosServiceImpl implements PrePedidosService{
 		prePedidoEAO.reprovar(prePedido);
 	}
 
+	public List<PrePedido> getPedidosEmAbertoConcessionaria(Integer id) {
+		return prePedidoEAO.listarPrePedidosEmAberto(id);		
+	}
+	
+	
+
 }
