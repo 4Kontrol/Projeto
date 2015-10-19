@@ -21,13 +21,6 @@ public class RelatoriosController {
 	
 	@RequestMapping("relatorios/idade")
 	public String maisConsultadosPorIdade(Model model){
-		String faixa1830 = "";
-		String faixa3150 = "";
-		String faixaMais50 = "";
-		
-		
-		
-		
 		return "relatorios/porFaixaIdade";
 	}
 	

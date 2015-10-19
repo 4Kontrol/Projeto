@@ -6,8 +6,6 @@
 package br.senac.model.entidades;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -27,13 +25,12 @@ import javax.persistence.TemporalType;
  * @author geovan
  */
 @Entity
-@Table
+@Table(name="prepedido")
 @NamedQueries({
     @NamedQuery(name = "PrePedido.resgatarTodos", query = "SELECT p FROM PrePedido p"),
     @NamedQuery(name = "PrePedido.resgatarPorId", query = "SELECT p FROM PrePedido p WHERE p.id=:id"),
     @NamedQuery(name = "PrePedido.resgatarPedidosDoMesmoCPFNoMesmoDia", query = "SELECT p FROM PrePedido p WHERE p.dataEmissaoPedido=:dataSelecionada and p.cliente.cpf=:cpf"),
     @NamedQuery(name = "PrePedido.resgatarPedidosConcessionaria", query="SELECT p FROM PrePedido p WHERE p.veiculo.concessionaria.id=:idConcessionaria and p.situacao=false"),
-    @NamedQuery(name = "PrePedido.porIdadeMenorEMaior", query="SELECT p FROM PrePedido p WHERE p.cliente.dataNascimento>:maiorQue and p.cliente.dataNascimento<:menorQue"),
     @NamedQuery(name = "PrePedido.porSexo", query="SELECT p FROM PrePedido p WHERE p.cliente.sexo=:sexo"),
     @NamedQuery(name = "PrePedido.concessionariasDistintas", query="SELECT distinct p.veiculo.concessionaria FROM PrePedido p where p.situacao=true"),
     @NamedQuery(name = "PrePedido.contarVendasPorConcessionaria", query="SELECT count(p)FROM PrePedido p WHERE p.situacao=true and p.veiculo.concessionaria.id=:idConcessionaria"),
@@ -42,7 +39,11 @@ import javax.persistence.TemporalType;
 })
 public class PrePedido implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne

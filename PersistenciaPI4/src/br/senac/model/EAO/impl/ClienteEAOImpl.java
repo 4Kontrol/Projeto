@@ -13,6 +13,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,40 +23,41 @@ import org.springframework.stereotype.Component;
 @Component
 public class ClienteEAOImpl implements ClienteEAO{
 
-    EntityManager entityManager;
-    
+    private EntityManager entityManager;
+        
     @Override
     public void cadastrar(Cliente cliente) {
-        entityManager = dbSingleton.getEntityManager();
-        
+    	entityManager = dbSingleton.getEntityManager();
         try{
             entityManager.getTransaction().begin();
             entityManager.persist(cliente);
             entityManager.getTransaction().commit();
         }catch(Exception e){
             e.printStackTrace();
+            entityManager.getTransaction().rollback();
         }finally{
             entityManager.close();
         }
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<Cliente> getLista() {
-        entityManager = dbSingleton.getEntityManager();
+    	entityManager = dbSingleton.getEntityManager();
         Query query = entityManager.createNamedQuery("Cliente.recuperarTodos");
         return (List<Cliente>) query.getResultList(); 
     }
 
     @Override
     public void editar(Cliente cliente) {
-        entityManager = dbSingleton.getEntityManager();
-        
+    	entityManager = dbSingleton.getEntityManager();
         try{
         	entityManager.getTransaction().begin();
         	entityManager.merge(cliente);
         	entityManager.getTransaction().commit();
         }catch(Exception e){
         	e.printStackTrace();
+        	entityManager.getTransaction().rollback();
         }finally{
         	entityManager.close();
         }
@@ -63,14 +65,13 @@ public class ClienteEAOImpl implements ClienteEAO{
 
     @Override
     public Cliente getCliente(Integer id) {
-        entityManager = dbSingleton.getEntityManager();
+    	entityManager = dbSingleton.getEntityManager();
         return entityManager.find(Cliente.class, id);
     }
 
     @Override
     public boolean deletar(Integer id) {
-        entityManager = dbSingleton.getEntityManager();
-        
+    	entityManager = dbSingleton.getEntityManager();
         try{
             entityManager.getTransaction().begin();
             entityManager.remove(getCliente(id));
@@ -78,10 +79,10 @@ public class ClienteEAOImpl implements ClienteEAO{
             return true;
         }catch(Exception e){
             e.printStackTrace();
+            entityManager.getTransaction().rollback();
             return false;
         }finally{
             entityManager.close();                 
         }
-    }
-    
+    }    
 }

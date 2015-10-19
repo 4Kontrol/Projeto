@@ -46,7 +46,7 @@
                 </div>
           </c:forEach>
                 <div class="text-center col-md-12">
-	                <a href="/pi4-app/quiosque/veiculos"><input type="button" class="btn btn-danger" value="Cancelar"/></a>
+	                <a href="/pi4-app/quiosque/veiculos"><input type="button" class="btn btn-danger" value="Voltar"/></a>
 	                <input type="submit" class="btn btn-primary" value="Próximo"/>	                
             	</div>                
 			</form>

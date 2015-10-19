@@ -21,7 +21,7 @@
 								<tr>
 								<td>${acessorio.id}</td>
 								<td>${acessorio.descricao}</td>
-								<td><a href="/pi4-app/acessorio/abrirFormulario/${acessorio.id}">Editar</a>&nbsp &nbsp &nbsp <a href="">Excluir</a></td>
+								<td><a href="/pi4-app/acessorio/abrirFormulario/${acessorio.id}">Editar</a>&nbsp &nbsp &nbsp <a href="/pi4-app/acessorio/remover/${acessorio.id}" class="excluir">Excluir</a></td>
 								</tr>
 							</c:forEach>
 						</table>
@@ -29,10 +29,25 @@
 				</div>
 			</div>
 		</div>
+		<script>
+			$(document).ready(function(){
+				$(".excluir").click(function(e){
+					e.preventDefault();
+					var href = $(this).attr('href');
+					$.ajax({
+						type: "post",
+						url: href,
+						cache: false,
+						success: function(response){
+							location.reload();
+							return true;
+						},
+						error: function(){
+							alert("Algo muito ruim aconteceu!");
+						}
+					});
+				})
+			})
+		</script>
 
 <jsp:include page="../rodape.jsp"></jsp:include>    
- 
- <script type="text/javascript">
-
-
- </script>

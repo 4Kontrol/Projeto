@@ -13,7 +13,6 @@ import br.senac.service.KitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -74,21 +73,19 @@ public class KitController {
         kitAcessorio.setItensDoKit(lista);
         kitService.cadastrar(kitAcessorio);
         model.addAttribute("kits", kitService.getLista());
-        return "kit/listar";
+        return "redirect:/kit/listar";
     }
        
     
     @RequestMapping("/kit/abrirFormulario/{id}")
-	public String editar(Model model, @PathVariable("id") Integer id, HttpSession session){
-		
+	public String editar(Model model, @PathVariable("id") Integer id, HttpSession session){		
 		KitAcessorio kitAcessorio = kitService.getKitAcessorio(id);
 		KitAcessorioViewModel kitAcessorioViewModel =  new KitAcessorioViewModel();
 		kitAcessorioViewModel.setId1(verificaNull(kitAcessorio.getItensDoKit(),0));
 		kitAcessorioViewModel.setId2(verificaNull(kitAcessorio.getItensDoKit(),1));
 		kitAcessorioViewModel.setId3(verificaNull(kitAcessorio.getItensDoKit(),2));
 		kitAcessorioViewModel.setId4(verificaNull(kitAcessorio.getItensDoKit(),3));
-		kitAcessorioViewModel.setId5(verificaNull(kitAcessorio.getItensDoKit(),4));
-		
+		kitAcessorioViewModel.setId5(verificaNull(kitAcessorio.getItensDoKit(),4));	
 		
 		//session.setAttribute("kitSessao", kitAcessorio);
 		model.addAttribute("acessorios", acessorioService.getLista());
@@ -127,9 +124,13 @@ public class KitController {
             kitAcessorio.setItensDoKit(lista);
             kitService.editar(kitAcessorio);
             model.addAttribute("kits", kitService.getLista());
-            return "kit/listar";
-                
-    	
+            return "redirect:/kit/listar";
+    }
+    
+    @RequestMapping("/kit/excluir/{id}")
+    public String remover(@PathVariable("id") Integer id, Model model){
+    	kitService.deletar(id);
+    	return "kit/listar";
     }
 
 }

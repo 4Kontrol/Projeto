@@ -13,6 +13,7 @@ import br.senac.util.dbSingleton;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Component;
@@ -30,19 +31,21 @@ public class PrePedidoEAOImpl implements PrePedidoEAO {
     @Override
     public void cadastrar(PrePedido prePedido) {
         entityManager = dbSingleton.getEntityManager();
-        
+        EntityTransaction entityTransaction = entityManager.getTransaction();
         try{
-            entityManager.getTransaction().begin();
+            entityTransaction.begin();
             entityManager.persist(prePedido);
-            entityManager.getTransaction().commit();
+            entityTransaction.commit();
         }catch(Exception e){
             e.printStackTrace();
+            entityTransaction.rollback();
         }finally{
             entityManager.close();
         }
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<PrePedido> getLista() {
         entityManager = dbSingleton.getEntityManager();
         Query query = entityManager.createNamedQuery("PrePedido.resgatarTodos");
@@ -58,14 +61,15 @@ public class PrePedidoEAOImpl implements PrePedidoEAO {
     @Override
     public boolean deletar(Integer id) {
        entityManager = dbSingleton.getEntityManager();
-       
+       EntityTransaction entityTransaction = entityManager.getTransaction();
        try{
-           entityManager.getTransaction().begin();
-           entityManager.remove(getPrePedido(id));
-           entityManager.getTransaction().commit();
+           entityTransaction.begin();
+           entityManager.remove(entityManager.merge(getPrePedido(id)));
+           entityTransaction.commit();
            return true;
        }catch(Exception e){
            e.printStackTrace();
+           entityTransaction.rollback();
            return false;
        }finally{
            entityManager.close();                   
@@ -75,13 +79,14 @@ public class PrePedidoEAOImpl implements PrePedidoEAO {
     
     private void editar(PrePedido prePedido) {
         entityManager = dbSingleton.getEntityManager();
-        
+        EntityTransaction entityTransaction = entityManager.getTransaction();
         try{
-        	entityManager.getTransaction().begin();
+        	entityTransaction.begin();
         	entityManager.merge(prePedido);
-        	entityManager.getTransaction().commit();        	
+        	entityTransaction.commit();        	
         }catch(Exception e){
         	e.printStackTrace();
+        	entityTransaction.rollback();
         }finally{
         	entityManager.close();
         }
@@ -99,6 +104,7 @@ public class PrePedidoEAOImpl implements PrePedidoEAO {
 		editar(prePedido);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<PrePedido> listarPrePedidosEmAberto(Integer id){
 		entityManager = dbSingleton.getEntityManager();

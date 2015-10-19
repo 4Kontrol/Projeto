@@ -24,7 +24,7 @@ public class dbSingleton {
                 entityManagerFactory = Persistence.createEntityManagerFactory("PI4PU");
                 
             }catch(Exception e ){
-                JOptionPane.showMessageDialog(null, "Erro " +e);
+                JOptionPane.showMessageDialog(null, "Crie um banco de dados MySQL com o nome pi4, usuário=root, senha=(em branco) e servidor=localhost:3306");
             }
         }
         return entityManagerFactory.createEntityManager();

@@ -61,52 +61,80 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="javascript:void(0)">4Kontrol</a>
+					<a class="navbar-brand" href="/pi4-app/backoffice">4Kontrol</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="dropdown"><a href="javascript:void(0)"
-							class="dropdown-toggle" data-toggle="dropdown" role="button">Veículos<span
-								class="caret"></span></a>
+						<li class="dropdown">
+						<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button">
+							Acessórios e Kits
+							<span class="caret">
+							</span>
+						</a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="javascript:void(0) " id="listarVeiculos">Listar
-										veículos cadastrados</a></li>
-								<li><a href="javascript:void(0)" id="cadastrarVeiculos">Cadastrar
-										veículo</a></li>
-								<li class="divider"></li>
-								<li><a href="javascript:void(0)" id="outrasOpcoesVeiculos">Outras
-										opções</a></li>
-							</ul></li>
-						<li class="active dropdown"><a href="javascript:void(0)"
-							class="dropdown-toggle" data-toggle="dropdown" role="button">Concessionárias<span
-								class="caret"></span></a>
+								<li>
+									<a href="/pi4-app/acessorio/listar"	id="listarAcessorios">
+										Listar Acessórios
+									</a>
+								</li>
+								<li>
+									<a href="/pi4-app/acessorio/abrirFormulario" id="cadastrarAcessorios">
+										Cadastrar Acessórios
+									</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									<a href="/pi4-app/kit/listar" id="listarKits">
+										Listar Kits
+									</a>
+								</li>
+								<li>
+									<a href="/pi4-app/kit/abrirFormulario" id="cadastrarKits">
+										Cadastrar Kits
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button">
+								Concessionárias
+								<span class="caret"></span>
+								</a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="/pi4-app/concessionaria/listarConcessionarias"
-									id="listarConcessionarias">Listar concessionárias
-										cadastrados</a></li>
-								<li><a href="/pi4-app/concessionaria/abrirFormulario"
-									id="cadastrarConcessionarias">Cadastrar concessionária</a></li>
-								<li class="divider"></li>
-								<li><a href="javascript:void(0)"
-									id="outrasOpcoesConcessionarias">Outras opções</a></li>
-							</ul></li>
-						<li class="dropdown"><a href="javascript:void(0)"
-							class="dropdown-toggle" data-toggle="dropdown" role="button">Acessórios<span
-								class="caret"></span></a>
+								<li>
+									<a href="/pi4-app/concessionaria/listarConcessionarias"	id="listarConcessionarias">
+										Listar concessionárias
+									</a>
+								</li>
+								<li>
+									<a href="/pi4-app/concessionaria/abrirFormulario" id="cadastrarConcessionarias">
+										Cadastrar concessionária
+									</a>
+								</li>								
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button">
+								Veículos
+								<span class="caret"></span>
+							</a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="/pi4-app/acessorio/listar"
-									id="listarAcessorios">Listar Acessórios</a></li>
-								<li><a href="/pi4-app/acessorio/abrirFormulario"
-									id="cadastrarAcessorios">Cadastrar Acessórios</a></li>
-								<li class="divider"></li>
-								<li><a href="/pi4-app/kit/listar" id="listarKits">Listar
-										Kits</a></li>
-								<li><a href="/pi4-app/kit/abrirFormulario" id="cadastrarKits">Cadastrar
-										Kits</a></li>
-							</ul></li>
+								<li>
+									<a href="javascript:void(0) " id="listarVeiculos">
+										Listar veículos
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void(0)" id="cadastrarVeiculos">
+										Cadastrar veículo
+									</a>
+								</li>
+							</ul>
+						</li>
 					</ul>
 					<form class="navbar-form navbar-left" role="search">
 						<div class="form-group">
@@ -114,15 +142,22 @@
 						</div>
 					</form>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/pi4-app/relatorios/menu">Relatórios</a></li>
-						<li class="dropdown"><a href="javascript:void(0)"
-							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false">Usuário<span class="caret"></span></a>
+						<li>
+							<a href="/pi4-app/relatorios/menu">Relatórios</a>
+						</li>
+						<li class="dropdown">
+							<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+								Usuário
+								<span class="caret"></span>
+							</a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="javascript:void(0)">Configurações de
-										usuário</a></li>
+								<li>
+									<a href="javascript:void(0)">Configurações</a>
+								</li>
 								<li class="divider"></li>
-								<li><a href="javascript:void(0)">Finalizar</a></li>
+								<li>
+									<a href="javascript:void(0)">Finalizar</a>
+								</li>
 							</ul></li>
 					</ul>
 				</div>

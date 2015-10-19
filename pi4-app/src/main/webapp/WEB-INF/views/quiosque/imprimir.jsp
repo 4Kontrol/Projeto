@@ -98,8 +98,8 @@
 		
 		
 		<div class="text-center col-md-12">
-			<a href="/pi4-app/quiosque/iniciar"><input type="button" class="btn btn-danger" value="Início" /></a>
-			<a href="/pi4-app/quiosque/cadastrarCliente"><input type="button" class="btn btn-inverse" value="Imprimir"/></a>
+			<a href="/pi4-app/"><input type="button" class="btn btn-danger" value="Início" /></a>
+			<a href=""><input type="button" class="btn btn-inverse" value="Imprimir" onclick="javascipt:print();"/></a>
 		</div>
 	</div>
 </div>

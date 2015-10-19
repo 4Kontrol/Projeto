@@ -10,5 +10,7 @@ package br.senac.util;
  * @author geovan
  */
 public class CriarPopularTabelas {
-    
+	public static void main (String args){
+		
+	}    
 }

@@ -3,64 +3,55 @@ package br.senac.model.EAO.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import br.senac.model.EAO.ConcessionariaEAO;
 import br.senac.model.entidades.Concessionaria;
 import br.senac.util.dbSingleton;
+
 import org.springframework.stereotype.Component;
 
 @Component
 public class ConcessionariaEAOImpl implements ConcessionariaEAO {
 
     private EntityManager entityManager;
-
+   
     @Override
     public void cadastrar(Concessionaria concessionaria) {
-
-        entityManager = dbSingleton.getEntityManager();
-
-        try {
-
-            entityManager.getTransaction().begin();
+    	entityManager = dbSingleton.getEntityManager();
+    	EntityTransaction entityTransaction = entityManager.getTransaction();
+    	try {
+    		entityTransaction.begin();
             entityManager.persist(concessionaria);
-            entityManager.getTransaction().commit();
-
+            entityTransaction.commit();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e);
+            entityTransaction.rollback();
         } finally {
             entityManager.close();
         }
-
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<Concessionaria> getLista() {
-        entityManager = dbSingleton.getEntityManager();
-
-        try {
-            Query q = entityManager.createQuery("SELECT c FROM Concessionaria c");
-            return (List<Concessionaria>) q.getResultList();
-        } catch (Exception e) {
-            entityManager.close();
-        } finally {
-            entityManager.close();
-        }
-        return null;
-
+    	entityManager = dbSingleton.getEntityManager();
+    	Query q = entityManager.createQuery("SELECT c FROM Concessionaria c");
+        return (List<Concessionaria>) q.getResultList();
     }
 
     @Override
     public void editar(Concessionaria concessionaria) {
-        entityManager = dbSingleton.getEntityManager();
-
-        try {
-            entityManager.getTransaction().begin();
+    	entityManager = dbSingleton.getEntityManager();
+    	EntityTransaction entityTransaction = entityManager.getTransaction();
+    	try {  
+    		entityTransaction.begin();
             entityManager.merge(concessionaria);
-            entityManager.getTransaction().commit();
-
+            entityTransaction.commit();
         } catch (Exception e) {
-            entityManager.close();
+            System.out.println(e);
+            entityTransaction.rollback();
         } finally {
             entityManager.close();
         }
@@ -68,27 +59,25 @@ public class ConcessionariaEAOImpl implements ConcessionariaEAO {
 
     @Override
     public Concessionaria getConssecionaria(Integer id) {
-        entityManager = dbSingleton.getEntityManager();
+    	entityManager = dbSingleton.getEntityManager();
         return entityManager.find(Concessionaria.class, id);
     }
 
     @Override
     public boolean deletar(Integer id) {
-        entityManager = dbSingleton.getEntityManager();
-
-        entityManager = dbSingleton.getEntityManager();
-
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.remove(getConssecionaria(id));
-            entityManager.getTransaction().commit();
+    	entityManager = dbSingleton.getEntityManager();
+    	EntityTransaction entityTransaction = entityManager.getTransaction();
+        try { 
+        	entityTransaction.begin();
+            entityManager.remove(entityManager.merge(getConssecionaria(id)));
+            entityTransaction.commit();
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e);
+            entityTransaction.rollback();
             return false;
         } finally {
             entityManager.close();
         }
     }
-
 }

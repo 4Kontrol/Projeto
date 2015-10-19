@@ -3,11 +3,15 @@ package br.senac.model.EAO.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import br.senac.model.EAO.KitEAO;
 import br.senac.model.entidades.KitAcessorio;
 import br.senac.util.dbSingleton;
+
 import javax.persistence.Query;
+import javax.swing.JOptionPane;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,19 +22,21 @@ public class KitEAOImpl implements KitEAO {
     @Override
     public void cadastrar(KitAcessorio kitAcessorio) {
         entityManager = dbSingleton.getEntityManager();
-
+        EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
-            entityManager.getTransaction().begin();
+            entityTransaction.begin();
             entityManager.persist(kitAcessorio);
-            entityManager.getTransaction().commit();
+            entityTransaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
+            entityTransaction.rollback();
         } finally {
             entityManager.close();
         }
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<KitAcessorio> getLista() {
         entityManager = dbSingleton.getEntityManager();
         Query query = entityManager.createNamedQuery("KitAcessorio.regastarKits");
@@ -40,13 +46,14 @@ public class KitEAOImpl implements KitEAO {
     @Override
     public void editar(KitAcessorio kitAcessorio) {
         entityManager = dbSingleton.getEntityManager();
-
+        EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
-            entityManager.getTransaction().begin();
+            entityTransaction.begin();
             entityManager.merge(kitAcessorio);
-            entityManager.getTransaction().commit();
+            entityTransaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
+            entityTransaction.rollback();
         } finally {
             entityManager.close();
         }
@@ -62,14 +69,15 @@ public class KitEAOImpl implements KitEAO {
     @Override
     public boolean deletar(Integer id) {
         entityManager = dbSingleton.getEntityManager();
-        
-        try{
-            entityManager.getTransaction().begin();
-            entityManager.remove(getKitAcessorio(id));
-            entityManager.getTransaction().commit();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        try{        	
+            entityTransaction.begin();            
+            entityManager.remove(entityManager.merge(getKitAcessorio(id)));            
+            entityTransaction.commit();
             return true;
         }catch(Exception e){
             e.printStackTrace();
+            entityTransaction.rollback();
             return false;
         }finally{
             entityManager.close();                 

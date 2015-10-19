@@ -7,6 +7,7 @@ package br.senac.model.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,19 +16,27 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
  * @author geovan
  */
 @Entity
-@Table
+@Table(name="cliente")
 @NamedQueries({
     @NamedQuery(name = "Cliente.recuperarTodos", query = "SELECT c FROM Cliente c"),
     @NamedQuery(name = "Cliente.recuperarPorId", query = "SELECT c FROM Cliente c WHERE c.id=:id")
 })
 public class Cliente implements Serializable{
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
@@ -35,19 +44,10 @@ public class Cliente implements Serializable{
     private String cpf;
     @OneToOne
     private Endereco endereco;
-    
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date dataNascimento;
-
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
     
-    
-
     public String getSexo() {
 		return sexo;
 	}
@@ -80,12 +80,19 @@ public class Cliente implements Serializable{
         this.cpf = cpf;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
+	public Endereco getEndereco() {
+		return endereco;
+	}
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-    
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
 }

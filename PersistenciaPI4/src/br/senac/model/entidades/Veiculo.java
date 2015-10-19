@@ -6,8 +6,6 @@
 package br.senac.model.entidades;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,13 +20,17 @@ import javax.persistence.Table;
  * @author geovan
  */
 @Entity
-@Table
+@Table(name="veiculo")
 @NamedQueries({
     @NamedQuery(name = "Veiculo.resgatarTodos",query = "SELECT v FROM Veiculo v")
 })
 public class Veiculo implements Serializable{
     
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String marca;

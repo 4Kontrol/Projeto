@@ -9,11 +9,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import br.senac.model.entidades.Acessorio;
 import br.senac.model.entidades.Cliente;
 import br.senac.model.entidades.Endereco;
@@ -21,6 +18,7 @@ import br.senac.model.entidades.KitAcessorio;
 import br.senac.model.entidades.PrePedido;
 import br.senac.model.entidades.Veiculo;
 import br.senac.service.AcessorioService;
+import br.senac.service.ClienteService;
 import br.senac.service.KitService;
 import br.senac.service.PrePedidosService;
 import br.senac.service.VeiculoService;
@@ -40,11 +38,18 @@ public class PrePedidoController {
 	@Autowired
 	private PrePedidosService prePedidoService;
 	
-	@RequestMapping("/quiosque/iniciar")
+	@Autowired
+	private ClienteService clienteService;
+	
+	/*abre a página inicial do quiosque*/
+	@RequestMapping("")
 	public String inicar(){
 		return "quiosque/iniciar";
 	}
 	
+	/*
+	 * Método que prepara a view com os veículos disponiveis.
+	 * */
 	@RequestMapping("/quiosque/veiculos")
 	public String listarVeiculos(Model model, HttpSession httpSession){
 		
@@ -54,6 +59,9 @@ public class PrePedidoController {
 		return "quiosque/escolhaCarro";
 	}
 	
+	/*
+	 * Método responsável por exibir os detalhes do carro selecionado.
+	 * */
 	@RequestMapping("/quiosque/detalhes/{id}")
 	public String detalharVeiculo(@PathVariable("id") Integer id, Model model, HttpSession httpSession){
 		
@@ -63,27 +71,29 @@ public class PrePedidoController {
 		return "quiosque/detalhesCarro";
 	}
 	
+	/*
+	 * Método que prepara a visualização dos kits de acessórios disponíveis.
+	 * */
 	@RequestMapping("/quiosque/selecaoKit")
 	public String selecionarKit(Model model, HttpSession httpSession){		
-		List<KitAcessorio> kits = kitService.getLista();
-		
-		model.addAttribute("kits",kits);
-				
+		List<KitAcessorio> kits = kitService.getLista();		
+		model.addAttribute("kits",kits);				
 		return "quiosque/escolhaKit";
 	}
 	
+	/*
+	 * Esse método prepara a visualização de acessórios disponíveis, 
+	 * removendo os da lista de acessórios a ser exibida os acessórios existentes no kit selecionado.
+	 * Nesse momento é criado o objeto de pre pedido.
+	 * */
 	@RequestMapping("quiosque/selecaoAcessorios/{id}")
 	public String adicionarAcessorio(Model model, HttpSession httpSession, @PathVariable("id") Integer id){
-		PrePedido prePedido = new PrePedido();
-		KitAcessorio kitAcessorio = kitService.getKitAcessorio(id);
+		PrePedido prePedido = new PrePedido();		
+		KitAcessorio kitAcessorio = kitService.getKitAcessorio(id);		
 		prePedido.setKitDeAcessorios(kitAcessorio);
-		Veiculo veiculo = (Veiculo)httpSession.getAttribute("veiculoSessao");
-		prePedido.setVeiculo(veiculo);
-		Date data = new Date();
-		prePedido.setDataEmissaoPedido(data);
-		
-		List<Acessorio> acessorios = acessorioService.getLista();
-		
+		prePedido.setVeiculo((Veiculo)httpSession.getAttribute("veiculoSessao"));
+		prePedido.setDataEmissaoPedido(new Date());		
+		List<Acessorio> acessorios = acessorioService.getLista();		
 		
 		for(Acessorio a: kitAcessorio.getItensDoKit()){
 			for(int i = 0; i < acessorios.size(); i++){
@@ -99,6 +109,9 @@ public class PrePedidoController {
 		return "quiosque/escolhaAcessorios";
 	}
 	
+	/*
+	 * Prepara a visualização do pre pedido para que o usuário confirme os dados.
+	 * */
 	@RequestMapping("quiosque/exibirPrePedido")
 	public String exibirPrePedido(Model model, HttpSession httpSession, String[] acessorio){
 		
@@ -119,20 +132,24 @@ public class PrePedidoController {
 		return "quiosque/prePedido";
 	}
 	
+	/*
+	 * Após confirmar os itens no passo anterior o cliente 
+	 * deve ser cadastrado todas as vezes por mais que já tenha se cadastrado (Conversar com o professor sobre esse requisito)
+	 * */
 	@RequestMapping("quiosque/cadastrarCliente")
 	public String efetivarPrepedido(Model model, HttpSession session){
-
-		return "quiosque/cliente";
+		return "quiosque/formCliente";
 	}
 	
+	/*Retorna a view de impressão conforme o requisito
+	 * */
 	@RequestMapping("quiosque/finalizarPrepedido")
-	public String finalizarPrepedido(Model model, HttpSession session, Cliente cliente){
+	public String finalizarPrepedido(Model model, HttpSession session, Cliente cliente, Endereco endereco){
 		
 		PrePedido prePedido = (PrePedido) session.getAttribute("prePedidoSessao");
 		
-		
-		prePedido.setCliente(cliente);
-		
+		clienteService.cadastrar(cliente);
+		prePedido.setCliente(cliente);		
 		prePedidoService.gerar(prePedido);
 		
 		model.addAttribute("prePedido",prePedido);
@@ -141,11 +158,12 @@ public class PrePedidoController {
 		model.addAttribute("veiculo",prePedido.getVeiculo());
 		model.addAttribute("cliente", cliente);
 		
-		
-		//mudar para tela que exibi todo o prepedido agora com as informa��es do cliente e com bot�o de imprimir e de inicio
 		return "quiosque/imprimir";
 	}
 	
+	/*
+	 * Método utilizado para calcular o valor total do pedido
+	 * */
 	private static Double calcularTotal(PrePedido prePedido){
 		Double total = 0D;
 		for(Acessorio a : prePedido.getListaDeAcessorios()){
@@ -156,11 +174,9 @@ public class PrePedidoController {
 		return total;
 	}
 	
-	@RequestMapping("quiosque/concessionaria/listarPedidos")
-	public String listaPedidos(Model model){
-		
-		model.addAttribute("prePedidos",prePedidoService.getPedidosEmAbertoConcessionaria(1));
-		
+	@RequestMapping("quiosque/concessionaria/listarPedidos/{idSelecionado}")
+	public String listaPedidos(@PathVariable("idSelecionado") Integer idSelecionado,Model model){		
+		model.addAttribute("prePedidos",prePedidoService.getPedidosEmAbertoConcessionaria(1));		
 		return "quiosque/listarPedidos";
 	}
 	

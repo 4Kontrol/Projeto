@@ -4,10 +4,8 @@ import java.util.List;
 
 import br.senac.model.EAO.ConcessionariaEAO;
 import br.senac.model.EAO.impl.ConcessionariaEAOImpl;
-import br.senac.model.EAO.impl.HospedesEAO;
 import br.senac.model.entidades.Concessionaria;
 import br.senac.model.entidades.Endereco;
-import br.senac.model.entidades.Hospede;
 
 public class ConcessionariaTest {
 	

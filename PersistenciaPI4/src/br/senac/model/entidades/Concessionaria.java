@@ -9,20 +9,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="concessionaria")
 public class Concessionaria implements Serializable{
 	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-        private Integer id;
+    private Integer id;
 	@Column(name = "nome")
 	private String nome;
 	@Column(name = "telefone")
@@ -32,10 +35,7 @@ public class Concessionaria implements Serializable{
 	@OneToOne(cascade = CascadeType.ALL)
 	private Endereco endereco; 
 	@OneToMany(mappedBy = "concessionaria",cascade = CascadeType.ALL)
-        private List<Veiculo> listaDeVeiculos;
-        
-        
-
+    private List<Veiculo> listaDeVeiculos;
 	
 	public Concessionaria(){
 	}

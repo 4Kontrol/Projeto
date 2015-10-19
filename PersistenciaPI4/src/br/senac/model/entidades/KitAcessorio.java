@@ -27,10 +27,14 @@ import javax.persistence.Table;
     @NamedQuery(name = "KitAcessorio.regastarKits", query = "SELECT k FROM KitAcessorio k"),
     @NamedQuery(name = "KitAcessorio.regastarPorId", query = "SELECT k FROM KitAcessorio k WHERE k.id=:id")
 })
-@Table
+@Table(name="kitacessorio")
 public class KitAcessorio implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "")
     private Integer id;    

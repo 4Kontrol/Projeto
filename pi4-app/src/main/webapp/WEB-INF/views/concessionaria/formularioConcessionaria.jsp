@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
-<jsp:include page="cabecalho.jsp"></jsp:include> 
+<jsp:include page="../cabecalho.jsp"></jsp:include> 
 
     <div class="row">
     	<h1>Cadastrar Concessionária</h1>
@@ -34,7 +34,7 @@
 		                <div class="">
 		                    <input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="CNPJ"/>
 		                </div>
-		                <input type="reset" value="Cancelar" class="btn btn-danger"/>
+		                <a href="/pi4-app/concessionaria/listarConcessionarias" class="btn btn-danger">Cancelar</a>
 		                <input id="submitForm" type="submit" value="Cadastrar" class="btn btn-primary"/>
 		            </form>		
 		    	</c:when>
@@ -65,15 +65,15 @@
 		                <div class="">
 		                    <input class="form-control" value="${concessionaria.cnpj}" type="text" id="cnpj" name="cnpj" placeholder="CNPJ"/>
 		                </div>
-		                <input type="reset" value="Cancelar" class="btn btn-danger"/>
+		                <a href="/pi4-app/concessionaria/listarConcessionarias" class="btn btn-danger">Cancelar</a>
 		                <input id="submitForm" type="submit" value="Editar" class="btn btn-primary"/>
 		            </form>
 		    	</c:otherwise>
 	    	</c:choose>        
         </div>
-    </div>
+    </div> 	
     
- <jsp:include page="rodape.jsp"></jsp:include>    
+ <jsp:include page="../rodape.jsp"></jsp:include>    
  
  <script type="text/javascript">
 

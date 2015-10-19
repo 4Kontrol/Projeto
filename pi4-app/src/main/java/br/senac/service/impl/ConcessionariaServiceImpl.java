@@ -12,14 +12,14 @@ import br.senac.service.ConcessionariaService;
 
 @Component
 @Service
-public class ConcessionariaServiceImpl implements ConcessionariaService{
-	
+public class ConcessionariaServiceImpl implements ConcessionariaService {
+
 	@Autowired
 	private ConcessionariaEAO concessionariaEAO;
 
 	public void cadastrar(Concessionaria concessionaria) {
 		concessionariaEAO.cadastrar(concessionaria);
-		
+
 	}
 
 	public List<Concessionaria> getLista() {
@@ -28,11 +28,20 @@ public class ConcessionariaServiceImpl implements ConcessionariaService{
 
 	public void editar(Concessionaria concessionaria) {
 		concessionariaEAO.editar(concessionaria);
-		
+
 	}
 
 	public Concessionaria getConssecionaria(Integer id) {
 		return concessionariaEAO.getConssecionaria(id);
+	}
+
+	public boolean remover(Integer id) {
+		if (concessionariaEAO.deletar(id)) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 }

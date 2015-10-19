@@ -38,8 +38,10 @@ public class AcessorioServiceImpl implements AcessorioService{
 	}
 
 	public boolean deletar(Integer id) {
-		// TODO Auto-generated method stub
-		return false;
+		if(acessorioEAO.deletar(id))
+			return true;
+		else
+			return false;
 	}
 	
 	

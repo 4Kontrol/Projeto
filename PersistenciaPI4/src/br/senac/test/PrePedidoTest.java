@@ -5,7 +5,6 @@
  */
 package br.senac.test;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import org.joda.time.DateTime;
@@ -45,7 +44,6 @@ public class PrePedidoTest {
     	PrePedidoEAOImpl prePedidoEAOImpl = new PrePedidoEAOImpl();
     	PrePedido prePedido = new PrePedido();
     	prePedido = prePedidoEAOImpl.getPrePedido(1);
-    	Calendar c = Calendar.getInstance();
     	Date agora = new Date();
     	//c = (agora - prePedido.getDataEmissaoPedido());
     	

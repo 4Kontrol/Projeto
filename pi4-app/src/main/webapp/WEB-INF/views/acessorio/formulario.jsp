@@ -42,10 +42,10 @@
         </div>
     </div>
 
-
-<jsp:include page="../rodape.jsp"></jsp:include>    
  
- <script type="text/javascript">
-
-
- </script>
+	 <script type="text/javascript">
+	
+	
+	 </script>
+ 
+<jsp:include page="../rodape.jsp"></jsp:include>    

@@ -12,13 +12,13 @@ public class AcessorioTest {
 	}
 	public static void testaInsere(){
 		AcessorioEAOImpl acessorioEAO = new AcessorioEAOImpl();
-		for	(int i = 0 ; i<9;i++){
+		
 			Acessorio acessorio = new Acessorio();
-			acessorio.setDescricao("Acessorio"+i);
-			acessorio.setPreco(i+0.5);
+			acessorio.setDescricao("Acessorio");
+			acessorio.setPreco(0.5);
 			
 			acessorioEAO.cadastrar(acessorio);
-		}
+		
 	}
 	
 	public static void testaExibe(){

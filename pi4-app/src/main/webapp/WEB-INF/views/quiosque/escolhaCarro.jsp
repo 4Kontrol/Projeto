@@ -67,7 +67,7 @@
     <div class="row text-left">
     	<c:forEach var="veiculo" items="${veiculos}">
 	        <a href="/pi4-app/quiosque/detalhes/${veiculo.id}">
-	        	<div class="col-md-2 car">	        	
+	        <div class="col-md-2 car">	        	
 	            <img class="img-responsive" src="<c:url value='/resources/img/veiculos/${veiculo.imagem}'/>" alt=""/><br>
 	            <div><strong>Modelo: </strong>${veiculo.modelo}</div>
 	            <div><strong>Marca: </strong>${veiculo.marca}</div>

@@ -3,9 +3,7 @@
 	pageEncoding="ISO-8859-1"%>
 
 
-<jsp:include page="cabecalho.jsp"></jsp:include> 
-
-
+<jsp:include page="../cabecalho.jsp"></jsp:include> 
 		<div class="jumbotron">
 			<div class="row">
 				<div class="text-center">
@@ -24,7 +22,11 @@
 								<tr>
 								<td>${concessionaria.id}</td>
 								<td>${concessionaria.nome}</td>
-								<td><a href="/pi4-app/concessionaria/abrirFormulario/${concessionaria.id}">Editar</a>&nbsp &nbsp &nbsp <a href="">Excluir</a></td>
+								<td>
+									<a href="/pi4-app/concessionaria/abrirFormulario/${concessionaria.id}">Editar</a>
+									&nbsp &nbsp &nbsp
+									<a href="/pi4-app/concessionaria/excluir/${concessionaria.id}" class="excluir">Excluir</a>
+								</td>
 							</tr>
 							</c:forEach>
 						</table>
@@ -32,6 +34,26 @@
 				</div>
 			</div>
 		</div>
+		<script>
+			$(document).ready(function(){
+				$(".excluir").click(function(e){
+					e.preventDefault();
+					var href = $(this).attr('href');
+					$.ajax({
+						type: "post",
+						url: href,
+						cache: false,
+						success: function(response){
+							location.reload();
+							return true;
+						},
+						error: function(){
+							alert("Algo muito ruim aconteceu!");
+						}
+					});
+				})
+			})
+		</script>
 
 
-<jsp:include page="rodape.jsp"></jsp:include>   
+<jsp:include page="../rodape.jsp"></jsp:include>   

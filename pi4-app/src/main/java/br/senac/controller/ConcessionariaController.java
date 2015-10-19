@@ -26,13 +26,13 @@ public class ConcessionariaController {
 		service.cadastrar(concessionaria);
 		model.addAttribute("concessionarias", service.getLista());
 		
-		return "listarConcessionarias";
+		return "redirect:/concessionaria/listarConcessionarias";
 	}
 	
 	@RequestMapping("/concessionaria/abrirFormulario")
 	public String abrirForm(){
 		
-		return "formularioConcessionaria";
+		return "concessionaria/formularioConcessionaria";
 	}
 	
 	@RequestMapping("/concessionaria/listarConcessionarias")
@@ -40,7 +40,7 @@ public class ConcessionariaController {
 		
 		model.addAttribute("concessionarias", service.getLista());
 		
-		return "listarConcessionarias";
+		return "concessionaria/listarConcessionarias";
 	}
 	
 	@RequestMapping("/concessionaria/abrirFormulario/{id}")
@@ -51,30 +51,37 @@ public class ConcessionariaController {
 		session.setAttribute("concessionariaSessao", concessionaria);
 		model.addAttribute("concessionaria", concessionaria);
 		
-		return "formularioConcessionaria";
+		return "concessionaria/formularioConcessionaria";
 	
 	}
 	
 	@RequestMapping(value = "/concessionaria/efetivarEdicao")
 	public String confirmarEdicao(Model model, Concessionaria concessionaria, Endereco endereco, HttpSession session){
 
-		Concessionaria concessionariaRecuperada = (Concessionaria)session.getAttribute("concessionariaSessao");
-		
-		
+		Concessionaria concessionariaRecuperada = (Concessionaria)session.getAttribute("concessionariaSessao");		
 		concessionaria.setId(concessionariaRecuperada.getId());
 		concessionaria.setEndereco(endereco);
 		concessionaria.getEndereco().setId(concessionariaRecuperada.getEndereco().getId());
-		
-		
 		service.editar(concessionaria);
-		model.addAttribute("concessionarias", service.getLista());
-		
-		return "listarConcessionarias";
+		model.addAttribute("concessionarias", service.getLista());		
+		return "redirect:/concessionaria/listarConcessionarias";
 	}
 	
 	@RequestMapping("backoffice")
 	public String menubackOffice(){
 		return "homeBackOffice";
 	}
-
+	
+	@RequestMapping("/concessionaria/excluir/{id}")
+	public String remover(Model model, @PathVariable("id") Integer id,HttpSession httpSession){
+		boolean resultado = service.remover(id);
+				
+		if (resultado){
+			return "concessionaria/listarConcessionarias";
+		}
+		else{
+			model.addAttribute("concessionaria", service.getConssecionaria(id));
+			return "concessionaria/erro";
+		}		
+	}
 }

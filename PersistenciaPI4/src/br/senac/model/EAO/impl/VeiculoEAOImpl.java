@@ -9,9 +9,13 @@ package br.senac.model.EAO.impl;
 import br.senac.model.EAO.VeiculoEAO;
 import br.senac.model.entidades.Veiculo;
 import br.senac.util.dbSingleton;
+
 import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,19 +30,21 @@ public class VeiculoEAOImpl implements VeiculoEAO{
     @Override
     public void cadastrar(Veiculo veiculo) {
         entityManager = dbSingleton.getEntityManager();
-        
+        EntityTransaction entityTransaction = entityManager.getTransaction();
         try{
-            entityManager.getTransaction().begin();
+            entityTransaction.begin();
             entityManager.persist(veiculo);
-            entityManager.getTransaction().commit();
+            entityTransaction.commit();
         }catch(Exception e){
             e.printStackTrace();
+            entityTransaction.rollback();
         }finally{
             entityManager.close();
         }
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<Veiculo> getLista() {
         entityManager = dbSingleton.getEntityManager();
         Query query = entityManager.createNamedQuery("Veiculo.resgatarTodos");
@@ -49,13 +55,14 @@ public class VeiculoEAOImpl implements VeiculoEAO{
     @Override
     public void editar(Veiculo veiculo) {
         entityManager = dbSingleton.getEntityManager();
-        
+        EntityTransaction entityTransaction = entityManager.getTransaction();
         try{
-            entityManager.getTransaction().begin();
+            entityTransaction.begin();
             entityManager.merge(veiculo);
-            entityManager.getTransaction().commit();
+            entityTransaction.commit();
         }catch(Exception e){
             e.printStackTrace();
+            entityTransaction.rollback();
         }finally{
             entityManager.close();
         }
@@ -70,14 +77,15 @@ public class VeiculoEAOImpl implements VeiculoEAO{
     @Override
     public boolean deletar(Integer id) {
         entityManager = dbSingleton.getEntityManager();
-        
+        EntityTransaction entityTransaction = entityManager.getTransaction();
         try{
-            entityManager.getTransaction().begin();
-            entityManager.remove(getVeiculo(id));
-            entityManager.getTransaction().commit();
+            entityTransaction.begin();
+            entityManager.remove(entityManager.merge(getVeiculo(id)));
+            entityTransaction.commit();
             return true;
         }catch(Exception e){
             e.printStackTrace();
+            entityTransaction.rollback();
             return false;
         }finally{
             entityManager.close();                 

@@ -61,7 +61,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">4Kontrol</a>
+				<a class="navbar-brand" href="/pi4-app/">4Kontrol</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->

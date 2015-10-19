@@ -19,12 +19,10 @@ public class AcessorioController {
 	private AcessorioService service;
 	
 	@RequestMapping("/acessorio/efetivarCadastro")
-	public String cadastrar(Model model, Acessorio acessorio){
-		
+	public String cadastrar(Model model, Acessorio acessorio){		
 		service.cadastrar(acessorio);
-		model.addAttribute("acessorios", service.getLista());
-		
-		return "acessorio/listar";
+		model.addAttribute("acessorios", service.getLista());		
+		return "redirect:/acessorio/listar";
 	}
 	
 	@RequestMapping("/acessorio/abrirFormulario")
@@ -63,6 +61,12 @@ public class AcessorioController {
 		service.editar(acessorio);
 		model.addAttribute("acessorios", service.getLista());
 		
+		return "redirect:/acessorio/listar";
+	}
+	
+	@RequestMapping("/acessorio/remover/{id}")
+	public String remover(Model model, @PathVariable("id") Integer id){
+		service.deletar(id);
 		return "acessorio/listar";
 	}
 

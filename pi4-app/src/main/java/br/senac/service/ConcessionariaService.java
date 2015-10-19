@@ -13,5 +13,7 @@ public interface ConcessionariaService {
 	public void editar(Concessionaria concessionaria);
 
 	public Concessionaria getConssecionaria(Integer id);
+	
+	public boolean remover (Integer id);
 
 }
