@@ -1,0 +1,79 @@
+package br.senac.model.EAO.impl;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import br.senac.model.EAO.ConcessionariaEAO;
+import br.senac.model.entidades.Concessionaria;
+import br.senac.util.dbSingleton;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ConcessionariaEAOImpl implements ConcessionariaEAO {
+
+    private EntityManager entityManager;
+    
+    public ConcessionariaEAOImpl() {
+    	this.entityManager = dbSingleton.getEntityManager();
+	}
+
+    @Override
+    public void cadastrar(Concessionaria concessionaria) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(concessionaria);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            entityManager.getTransaction().begin();
+            entityManager.getTransaction().rollback();
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public List<Concessionaria> getLista() {
+    	System.out.println("Passou por aqui e o entity manager" + entityManager.equals(null));
+    	Query q = entityManager.createQuery("SELECT c FROM Concessionaria c");
+        return (List<Concessionaria>) q.getResultList();
+    }
+
+    @Override
+    public void editar(Concessionaria concessionaria) {
+    	try {
+            entityManager.getTransaction().begin();
+            entityManager.merge(concessionaria);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            entityManager.getTransaction().begin();
+            entityManager.getTransaction().rollback();
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public Concessionaria getConssecionaria(Integer id) {
+        return entityManager.find(Concessionaria.class, id);
+    }
+
+    @Override
+    public boolean deletar(Integer id) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.remove(getConssecionaria(id));
+            entityManager.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Erro no método deletar ->"+e);
+            entityManager.getTransaction().rollback();
+            return false;
+        } finally {
+            entityManager.close();
+        }
+    }
+}

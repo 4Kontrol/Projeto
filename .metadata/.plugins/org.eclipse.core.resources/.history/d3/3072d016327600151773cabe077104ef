@@ -1,0 +1,87 @@
+package br.senac.model.EAO.impl;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
+import br.senac.model.EAO.KitEAO;
+import br.senac.model.entidades.KitAcessorio;
+import br.senac.util.dbSingleton;
+
+import javax.persistence.Query;
+import javax.swing.JOptionPane;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class KitEAOImpl implements KitEAO {
+
+    private EntityManager entityManager;
+
+    @Override
+    public void cadastrar(KitAcessorio kitAcessorio) {
+        entityManager = dbSingleton.getEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        try {
+            entityTransaction.begin();
+            entityManager.persist(kitAcessorio);
+            entityTransaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            entityTransaction.rollback();
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<KitAcessorio> getLista() {
+        entityManager = dbSingleton.getEntityManager();
+        Query query = entityManager.createNamedQuery("KitAcessorio.regastarKits");
+        return (List<KitAcessorio>) query.getResultList();
+    }
+
+    @Override
+    public void editar(KitAcessorio kitAcessorio) {
+        entityManager = dbSingleton.getEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        try {
+            entityTransaction.begin();
+            entityManager.merge(kitAcessorio);
+            entityTransaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            entityTransaction.rollback();
+        } finally {
+            entityManager.close();
+        }
+
+    }
+
+    @Override
+    public KitAcessorio getKitAcessorio(Integer id) {
+        entityManager = dbSingleton.getEntityManager();
+        return (KitAcessorio) entityManager.find(KitAcessorio.class, id);
+    }
+
+    @Override
+    public boolean deletar(Integer id) {
+        entityManager = dbSingleton.getEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        try{
+        	JOptionPane.showMessageDialog(null,"Verificando se o kit está nulo"+ getKitAcessorio(id).equals(null));
+            entityTransaction.begin();            
+            entityManager.remove(entityManager.merge(getKitAcessorio(id)));            
+            entityTransaction.commit();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            entityTransaction.rollback();
+            return false;
+        }finally{
+            entityManager.close();                 
+        }
+    }
+}
